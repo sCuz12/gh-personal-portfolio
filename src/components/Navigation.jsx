@@ -20,7 +20,7 @@ export function Navigation({ currentPath }) {
     <header className="site-nav">
       <div className="nav-frame">
         <AppLink to="/" className="nav-identity">
-          <strong>GH_</strong><i>/</i><span>INDEX</span>
+          <strong>GH_</strong><i>/</i><span>GEORGE HADJISAVVA</span>
         </AppLink>
 
         <button

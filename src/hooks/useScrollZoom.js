@@ -10,6 +10,10 @@ export function useScrollZoom(dependency) {
     const hero = document.querySelector('.hero');
     const network = document.querySelector('.network');
     const copy = document.querySelector('.hero-copy');
+    const monogram = document.querySelector('.hero-zoom-monogram');
+    const heroInterface = [...document.querySelectorAll(
+      '.hero-meta, .hero-bottom, .local-time',
+    )];
     const zoomSections = [...document.querySelectorAll('.zoom-section')];
     let animationFrame = 0;
 
@@ -19,18 +23,32 @@ export function useScrollZoom(dependency) {
       const stageBounds = stage.getBoundingClientRect();
       const scrollDistance = Math.max(1, stage.offsetHeight - window.innerHeight);
       const progress = clamp(-stageBounds.top / scrollDistance);
+      const acceleratedProgress = progress ** 2.4;
+      const interfaceOpacity = 1 - clamp(progress * 1.8);
 
       hero.style.setProperty('--hero-progress', progress);
-      hero.style.transform = `scale(${1 + progress * 0.08})`;
-      hero.style.borderRadius = `${progress * 34}px`;
-      hero.style.opacity = 1 - progress * 0.5;
+      hero.style.transform = `scale(${1 + progress * 0.03})`;
+      hero.style.borderRadius = `${progress * 20}px`;
+      hero.style.opacity = '1';
+
+      heroInterface.forEach((element) => {
+        element.style.opacity = interfaceOpacity;
+      });
+
+      if (monogram) {
+        const monogramScale = 1 + acceleratedProgress * 34;
+        monogram.style.opacity = clamp(0.08 + progress * 1.7);
+        monogram.style.transform = `translate(-50%, -50%) scale(${monogramScale})`;
+      }
 
       if (network) {
-        network.style.transform = `scale(${1 + progress * 0.75}) translate3d(${progress * -5}%, ${progress * 4}%, 0)`;
+        network.style.opacity = 1 - clamp(progress * 1.45);
+        network.style.transform = `scale(${1 + progress * 2.5}) translate3d(${progress * -5}%, ${progress * 4}%, 0)`;
       }
 
       if (copy) {
-        copy.style.transform = `translate3d(0, ${progress * -70}px, 0) scale(${1 - progress * 0.08})`;
+        copy.style.opacity = interfaceOpacity;
+        copy.style.transform = `translate3d(0, ${progress * -90}px, 0) scale(${1 - progress * 0.12})`;
       }
     };
 
@@ -63,6 +81,10 @@ export function useScrollZoom(dependency) {
       window.cancelAnimationFrame(animationFrame);
       window.removeEventListener('scroll', requestUpdate);
       window.removeEventListener('resize', requestUpdate);
+
+      [hero, network, copy, monogram, ...heroInterface].filter(Boolean).forEach((element) => {
+        element.removeAttribute('style');
+      });
     };
   }, [dependency]);
 }

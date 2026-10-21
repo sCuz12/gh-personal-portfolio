@@ -1,4 +1,5 @@
 import { Navigation } from './components/Navigation';
+import { CustomScrollbar } from './components/CustomScrollbar';
 import { useCustomCursor } from './hooks/useCustomCursor';
 import { useRevealOnScroll } from './hooks/useRevealOnScroll';
 import { useScrollZoom } from './hooks/useScrollZoom';
@@ -36,8 +37,9 @@ export function App() {
       <div className="cursor-dot" />
       <div className="cursor-ring" />
       <div className="transition">GH_</div>
+      <CustomScrollbar />
       <Navigation currentPath={path} />
-      <main><CurrentPage /></main>
+      <main id="page-content"><CurrentPage /></main>
     </div>
   );
 }

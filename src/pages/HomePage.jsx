@@ -2,6 +2,7 @@ import { AgentNetworkScene } from '../components/AgentNetworkScene';
 import { AppLink } from '../components/AppLink';
 import { Footer } from '../components/Footer';
 import { Marquee } from '../components/Marquee';
+import { LocalTime } from '../components/LocalTime';
 import { ProjectGrid } from '../components/ProjectGrid';
 import { TiltCard } from '../components/TiltCard';
 
@@ -11,6 +12,7 @@ function Hero() {
       <section className="hero shell">
         <AgentNetworkScene />
         <div className="hero-grid" aria-hidden="true" />
+        <div className="hero-zoom-monogram" aria-hidden="true">GH</div>
 
         <div className="hero-meta">
           <span><i /> AVAILABLE FOR SELECT PROJECTS</span>
@@ -18,7 +20,7 @@ function Hero() {
         </div>
 
         <div className="hero-copy">
-          <p className="hero-kicker">SOFTWARE ENGINEER / SYSTEMS BUILDER</p>
+          <p className="hero-kicker">GEORGE HADJISAVVA / SOFTWARE ENGINEER / SYSTEMS BUILDER</p>
           <h1><span>I build the systems</span><br /><em>behind the magic.</em></h1>
           <p className="hero-lede">
             Backend infrastructure, agentic workflows, custom MCP servers, and interfaces
@@ -38,7 +40,7 @@ function Hero() {
           <div className="scroll-cue"><i /><span>SCROLL TO EXPLORE</span></div>
         </div>
 
-        <div className="scene-label"><span>LIVE SYSTEM</span><b>AGENT NETWORK / 42 NODES</b></div>
+        <LocalTime />
       </section>
     </div>
   );
