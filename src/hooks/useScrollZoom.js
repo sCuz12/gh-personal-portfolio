@@ -10,7 +10,8 @@ export function useScrollZoom(dependency) {
     const hero = document.querySelector('.hero');
     const network = document.querySelector('.network');
     const copy = document.querySelector('.hero-copy');
-    const monogram = document.querySelector('.hero-zoom-monogram');
+    const zoomMark = document.querySelector('.hero-zoom-mark');
+    const transitionShape = document.querySelector('.hero-transition-shape');
     const heroInterface = [...document.querySelectorAll(
       '.hero-meta, .hero-bottom, .local-time',
     )];
@@ -24,6 +25,7 @@ export function useScrollZoom(dependency) {
       const scrollDistance = Math.max(1, stage.offsetHeight - window.innerHeight);
       const progress = clamp(-stageBounds.top / scrollDistance);
       const acceleratedProgress = progress ** 2.4;
+      const shapeProgress = clamp((progress - 0.38) / 0.62);
       const interfaceOpacity = 1 - clamp(progress * 1.8);
 
       hero.style.setProperty('--hero-progress', progress);
@@ -35,10 +37,29 @@ export function useScrollZoom(dependency) {
         element.style.opacity = interfaceOpacity;
       });
 
-      if (monogram) {
-        const monogramScale = 1 + acceleratedProgress * 34;
-        monogram.style.opacity = clamp(0.08 + progress * 1.7);
-        monogram.style.transform = `translate(-50%, -50%) scale(${monogramScale})`;
+      if (zoomMark) {
+        const markScale = 1 + acceleratedProgress * 26;
+        const markExit = clamp((progress - 0.76) / 0.18);
+        zoomMark.style.opacity = clamp(0.18 + progress * 1.65) * (1 - markExit);
+        zoomMark.style.transform = `translate(-50%, -50%) rotate(${progress * 14}deg) scale(${markScale})`;
+      }
+
+      if (transitionShape) {
+        const isMobile = window.innerWidth <= 800;
+        const originX = isMobile ? 76 : 63;
+        const originY = isMobile ? 43 : 52;
+        const targetPoints = [
+          [0, 0], [100, 0], [100, 73], [95, 75], [90, 75], [84, 74],
+          [78, 70], [71, 64], [64, 58], [57, 53], [50, 51], [43, 52],
+          [36, 56], [29, 62], [22, 68], [15, 73], [8, 76], [0, 73],
+        ];
+        const points = targetPoints.map(([targetX, targetY]) => {
+          const x = originX + (targetX - originX) * shapeProgress;
+          const y = originY + (targetY - originY) * shapeProgress;
+          return `${x}% ${y}%`;
+        });
+
+        transitionShape.style.clipPath = `polygon(${points.join(', ')})`;
       }
 
       if (network) {
@@ -82,7 +103,7 @@ export function useScrollZoom(dependency) {
       window.removeEventListener('scroll', requestUpdate);
       window.removeEventListener('resize', requestUpdate);
 
-      [hero, network, copy, monogram, ...heroInterface].filter(Boolean).forEach((element) => {
+      [hero, network, copy, zoomMark, transitionShape, ...heroInterface].filter(Boolean).forEach((element) => {
         element.removeAttribute('style');
       });
     };

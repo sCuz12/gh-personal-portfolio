@@ -11,10 +11,15 @@ import { TiltCard } from '../components/TiltCard';
 function Hero() {
   return (
     <div className="hero-stage">
-      <section className="hero shell">
+      <section className="hero">
         <AgentNetworkScene />
         <div className="hero-grid" aria-hidden="true" />
-        <div className="hero-zoom-monogram" aria-hidden="true">GH</div>
+        <div className="hero-transition-shape" aria-hidden="true" />
+        <div className="hero-zoom-mark" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </div>
 
         <div className="hero-meta">
           <span><i /> AVAILABLE FOR SELECT PROJECTS</span>

@@ -150,7 +150,7 @@ The header uses a dark technical-console treatment:
 - Centered `MENU =` control
 - Theme toggle icon
 - Terminal-style work shortcut (`>_`)
-- Orange `WORK WITH ME »` call to action
+- Pastel-lime `WORK WITH ME »` call to action
 - Expandable menu containing Work, Services, and About
 
 ### Custom scrollbar
@@ -198,6 +198,7 @@ Purpose:
 
 Content and elements:
 
+- Full-width hero canvas with content aligned to a 1440px editorial grid
 - Availability status
 - Cyprus / working globally
 - Full name and professional descriptor
@@ -214,9 +215,10 @@ Scroll behavior:
 
 - The hero pins while the visitor scrolls.
 - Interface elements and the Three.js network recede.
-- A large `GH` monogram accelerates toward the viewer.
-- The monogram expands until it overtakes the viewport.
-- The visitor then enters the featured-work section.
+- A single six-arm asterisk in the pastel accent color accelerates toward the viewer.
+- The asterisk scales and rotates before resolving into a full-width pastel field.
+- The field forms an asymmetric curved lower edge that reveals the featured-work section.
+- The signature transition becomes static for visitors who prefer reduced motion.
 
 Brand review questions:
 
@@ -296,7 +298,7 @@ Presentation:
 
 - Two large interactive panels
 - Neutral/paper treatment for recruiters
-- Acid-green treatment for companies
+- Pastel-lime treatment for companies
 - 3D pointer tilt and light response
 
 ### Section 4 — Selected systems grid
@@ -498,9 +500,9 @@ The stack is still marked as placeholder content and must be reconciled with Geo
 |---|---:|---|
 | Ink | `#151515` | Primary text, dark surfaces |
 | Paper | `#efede6` | Main background |
-| Acid | `#d8ff3e` | AI/system signal, interaction highlight |
-| Signal blue | `#2857ff` | Product energy, statement sections |
-| Orange | `#ff6b00` | Commercial/contact CTA in navigation |
+| Acid / pastel lime | `#dff2a6` | Primary brand accent, CTA, AI/system signal, interaction highlight, hero transition |
+| Signal blue / cornflower-indigo | `#5267c9` | Product energy, statement sections, secondary color field |
+| Orange | `#ff6b00` | Limited scrollbar interaction accent; not part of the primary navigation CTA |
 | Near black | `#050505` | Navigation and console surfaces |
 
 ### Typography
@@ -514,10 +516,11 @@ The stack is still marked as placeholder content and must be reconciled with Geo
 - Dashed borders and rails
 - Console/system metadata
 - Large editorial typography
-- Monograms (`GH`, `GH_`)
+- `GH_` identity treatments and a single six-arm asterisk as the hero motion mark
 - Technical grids
 - Orbit and node diagrams
-- Strong black, paper, acid, blue, and orange color fields
+- Strong black and paper fields with softened pastel-lime and cornflower-indigo accents
+- Full-width color transitions with shaped, asymmetric boundaries
 - High contrast between product imagery and abstract system graphics
 
 ### Current creative territory
@@ -528,9 +531,11 @@ The visual direction can be described as:
 
 ### Brand expert review questions
 
-- Are acid green, electric blue, and safety orange too many competing signals?
-- Which color should be the primary recognizable brand asset?
+- Is pastel lime distinctive enough to serve as the primary recognizable brand asset?
+- Should orange remain as a limited scrollbar accent or be removed from the shared identity?
+- Does the softened cornflower-indigo provide enough energy beside the pastel lime?
 - Should `GH_` become a formal identity mark?
+- Should the asterisk become a reusable brand mark or remain exclusive to the hero transition?
 - Does the console language feel authentic to George’s work or overly performative?
 - How can the identity feel distinctive without resembling a generic creative developer portfolio?
 - Should photography, portraiture, diagrams, or product UI dominate the visual story?
@@ -542,7 +547,8 @@ The visual direction can be described as:
 Current motion includes:
 
 - Interactive Three.js network responding to pointer movement
-- Full hero-to-`GH` scroll zoom
+- Full-width hero-to-asterisk scroll zoom
+- Asterisk-to-pastel-field transformation with a shaped lower boundary
 - Pinned hero sequence
 - Scroll-linked section scaling
 - Reveal-on-scroll transitions
@@ -565,7 +571,7 @@ Questions for the branding expert:
 
 - What should become the single signature interaction?
 - Which animations currently compete with the work?
-- Should the `GH` zoom be part of the permanent identity system?
+- Should the asterisk zoom and shaped section reveal become part of the permanent identity system?
 - How should motion communicate trust and engineering maturity rather than spectacle alone?
 
 ---
