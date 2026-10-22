@@ -227,6 +227,529 @@
   }
 }
 
+/* Work page — one viewport of scroll choreography per project. */
+.project-choreography {
+  position: relative;
+  color: #f2f0e9;
+  background: #080808;
+}
+
+.choreography-sticky {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-columns: minmax(210px, 0.72fr) minmax(0, 3fr);
+  gap: clamp(28px, 5vw, 80px);
+  height: 100vh;
+  padding-top: 34px;
+  padding-bottom: 34px;
+  overflow: hidden;
+}
+
+.choreography-index {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding-top: 4px;
+}
+
+.choreography-index > span {
+  color: #74746e;
+}
+
+.choreography-index ol {
+  display: grid;
+  gap: 2px;
+  padding: 0;
+  margin: auto 0;
+  list-style: none;
+}
+
+.choreography-index li {
+  border-left: 1px solid #2e2e2e;
+  opacity: 0.35;
+  transition: opacity 240ms ease, border-color 240ms ease, transform 240ms ease;
+}
+
+.choreography-index li.active {
+  border-color: var(--acid);
+  opacity: 1;
+  transform: translateX(8px);
+}
+
+.choreography-index button {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 12px;
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.choreography-index button span {
+  color: var(--acid);
+  font: 9px var(--mono);
+}
+
+.choreography-index button strong {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.choreography-project {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-width: 0;
+  opacity: calc(1 - var(--crossfade-progress) * 0.82);
+  transform: scale(calc(1 - var(--crossfade-progress) * 0.025));
+  transform-origin: center;
+  will-change: opacity, transform;
+}
+
+.choreography-header {
+  display: grid;
+  grid-template-columns: 75px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: start;
+  min-height: 116px;
+}
+
+.choreography-number {
+  color: var(--acid);
+  font: 500 46px/0.9 var(--mono);
+  letter-spacing: -0.08em;
+}
+
+.choreography-header small {
+  color: #8b8b83;
+}
+
+.choreography-header h2 {
+  max-width: 900px;
+  margin: 8px 0 0;
+  font-size: clamp(34px, 4.2vw, 70px);
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+  opacity: var(--enter-progress);
+  transform: translateX(calc((1 - var(--enter-progress)) * 90px));
+  will-change: transform, opacity;
+}
+
+.project-status {
+  padding-top: 7px;
+  color: #64645f;
+  font: 10px var(--mono);
+  letter-spacing: 0.1em;
+  transition: color 220ms ease, text-shadow 220ms ease;
+}
+
+.project-status.active {
+  color: var(--acid);
+  text-shadow: 0 0 18px rgba(216, 255, 62, 0.55);
+}
+
+.choreography-stage {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  background: #101010;
+  border: 1px solid #30302e;
+}
+
+.choreography-surface,
+.choreography-underneath,
+.choreography-media {
+  position: absolute;
+  inset: 0;
+}
+
+.choreography-underneath {
+  padding: 70px 5% 45px;
+  color: #e9e7df;
+  background:
+    linear-gradient(rgba(216, 255, 62, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 255, 62, 0.035) 1px, transparent 1px),
+    #090909;
+  background-size: 36px 36px;
+}
+
+.surface-peel {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  clip-path: inset(calc(var(--peel-progress) * 100%) 0 0 0);
+  will-change: clip-path;
+}
+
+.choreography-surface {
+  display: grid;
+  place-items: center;
+  padding: 55px 5% 35px;
+  background: #ded9cc;
+}
+
+.choreography-media {
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  padding: 55px 5% 48px;
+  background: #151515;
+}
+
+.choreography-media > img {
+  width: min(100%, 920px);
+  height: min(100%, 520px);
+  object-fit: contain;
+  filter: drop-shadow(0 28px 55px rgba(0, 0, 0, 0.45));
+}
+
+.media-navigation {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  color: #d0cfc7;
+  background: #080808;
+  border: 1px solid #44443f;
+}
+
+.media-navigation button {
+  width: 38px;
+  height: 34px;
+  color: var(--acid);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.media-navigation span {
+  padding-inline: 10px;
+  border-inline: 1px solid #30302e;
+  font: 8px var(--mono);
+  letter-spacing: 0.08em;
+}
+
+.view-label {
+  position: absolute;
+  top: 17px;
+  left: 20px;
+  z-index: 3;
+  padding: 7px 9px;
+  color: #f2f0e9;
+  background: #111;
+  font: 9px var(--mono);
+  letter-spacing: 0.1em;
+}
+
+.surface-placeholder {
+  width: min(84%, 820px);
+  min-height: 72%;
+  color: #171717;
+  background: #f4f1e9;
+  border: 1px solid #aba89e;
+  border-radius: 5px;
+  box-shadow: 22px 28px 0 rgba(0, 0, 0, 0.14);
+  transform: perspective(1000px) rotateX(2deg) rotateY(-3deg);
+}
+
+.surface-placeholder > header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 42px;
+  padding: 0 15px;
+  border-bottom: 1px solid #ccc8bd;
+}
+
+.surface-placeholder > header span {
+  margin-right: auto;
+  font: 9px var(--mono);
+}
+
+.surface-placeholder > header i {
+  width: 7px;
+  height: 7px;
+  background: #aaa79e;
+  border-radius: 50%;
+}
+
+.surface-dashboard {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  min-height: 310px;
+}
+
+.surface-dashboard aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 22px 12px;
+  border-right: 1px solid #ccc8bd;
+}
+
+.surface-dashboard aside i {
+  width: 24px;
+  height: 3px;
+  background: #ccc8bd;
+}
+
+.surface-main {
+  padding: 35px;
+}
+
+.surface-main > span {
+  font: 9px var(--mono);
+}
+
+.surface-main > strong {
+  display: block;
+  max-width: 620px;
+  margin: 55px 0 35px;
+  font-size: clamp(28px, 4vw, 58px);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.surface-main > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.surface-main > div i {
+  height: 70px;
+  background: #ddd9ce;
+}
+
+.surface-main > div i:first-child {
+  background: var(--acid);
+}
+
+.diagram-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12%;
+  align-items: center;
+  height: 100%;
+}
+
+.diagram-grid svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.diagram-line {
+  fill: none;
+  stroke: var(--acid);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--line-progress));
+  vector-effect: non-scaling-stroke;
+}
+
+.diagram-node {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 150px;
+  padding: 20px;
+  background: #111;
+  border: 1px solid #3a3a36;
+  opacity: calc(0.22 + var(--node-progress) * 0.78);
+  transform: scale(calc(0.9 + var(--node-progress) * 0.1));
+}
+
+.diagram-node small {
+  color: var(--acid);
+}
+
+.diagram-node strong {
+  margin: 25px 0 7px;
+  font: 500 20px var(--mono);
+}
+
+.diagram-node span {
+  color: #83837c;
+  font-size: 12px;
+}
+
+.gate-node.active {
+  color: #0b0b0b;
+  background: var(--acid);
+  border-color: var(--acid);
+  animation: gatePulse 1.25s ease-in-out infinite;
+}
+
+.gate-node.active small,
+.gate-node.active span {
+  color: #0b0b0b;
+}
+
+.view-toggle {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+  display: flex;
+  padding: 3px;
+  background: #080808;
+  border: 1px solid #44443f;
+}
+
+.view-toggle button {
+  padding: 8px 11px;
+  color: #8e8e88;
+  background: transparent;
+  border: 0;
+  font: 9px var(--mono);
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.view-toggle button[aria-pressed='true'] {
+  color: #080808;
+  background: var(--acid);
+}
+
+.choreography-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 35px;
+  align-items: end;
+  min-height: 104px;
+  padding-top: 20px;
+}
+
+.choreography-footer p {
+  max-width: 720px;
+  margin: 0;
+  color: #9b9b94;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.choreography-summary {
+  display: grid;
+  gap: 14px;
+}
+
+.choreography-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.choreography-technologies li {
+  padding: 6px 9px;
+  color: #b8b8b0;
+  border: 1px solid #3a3a36;
+  font: 8px var(--mono);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.choreography-footer a {
+  position: relative;
+  z-index: 8;
+  display: flex;
+  gap: 45px;
+  align-items: center;
+  padding: 14px 0;
+  color: #f2f0e9;
+  border-bottom: 1px solid #5a5a54;
+  font: 10px var(--mono);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.choreography-footer a span {
+  color: var(--acid);
+  font-size: 20px;
+}
+
+@keyframes gatePulse {
+  50% {
+    box-shadow: 0 0 0 12px rgba(216, 255, 62, 0.08), 0 0 45px rgba(216, 255, 62, 0.2);
+    transform: scale(1.035);
+  }
+}
+
+@media (max-width: 800px) {
+  .project-choreography {
+    height: auto !important;
+  }
+
+  .choreography-sticky {
+    position: relative;
+    display: block;
+    height: auto;
+    min-height: 100svh;
+    padding-block: 70px;
+    overflow: visible;
+  }
+
+  .choreography-index {
+    display: none;
+  }
+
+  .choreography-project {
+    display: none;
+  }
+
+  .choreography-project:first-of-type {
+    display: grid;
+    min-height: 820px;
+  }
+
+  .choreography-header {
+    grid-template-columns: 55px 1fr;
+  }
+
+  .project-status {
+    grid-column: 2;
+  }
+
+  .choreography-number {
+    font-size: 34px;
+  }
+
+  .choreography-stage {
+    min-height: 470px;
+  }
+
+  .diagram-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .diagram-grid svg {
+    display: none;
+  }
+
+  .choreography-footer {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Custom GH scrollbar: native scroll behavior remains intact. */
 html {
   scrollbar-width: none;

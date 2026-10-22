@@ -1,10 +1,9 @@
 import { AgentNetworkScene } from '../components/AgentNetworkScene';
 import { AppLink } from '../components/AppLink';
 import { Footer } from '../components/Footer';
-import { FeaturedWork } from '../components/FeaturedWork';
 import { Marquee } from '../components/Marquee';
 import { LocalTime } from '../components/LocalTime';
-import { ProjectGrid } from '../components/ProjectGrid';
+import { ProjectChoreography } from '../components/ProjectChoreography';
 import { TiltCard } from '../components/TiltCard';
 
 function Hero() {
@@ -76,9 +75,12 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <FeaturedWork />
+      <ProjectChoreography
+        id="featured-work"
+        indexLabel="FEATURED WORK"
+        maxProjects={3}
+      />
       <AudiencePaths />
-      <div className="zoom-section"><ProjectGrid /></div>
       <section className="statement zoom-section">
         <div className="shell reveal">
           <p>SOFTWARE SHOULD BE</p>
