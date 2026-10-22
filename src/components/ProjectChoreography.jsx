@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AppLink } from './AppLink';
 import { useProjects } from '../hooks/useProjects';
 import { useProjectChoreography } from '../hooks/useProjectChoreography';
 
@@ -211,9 +212,13 @@ export function ProjectChoreography({
                 ))}
               </ul>
             </div>
-            <a href={caseStudyUrl} target={activeProject.projectUrl ? '_blank' : undefined} rel={activeProject.projectUrl ? 'noreferrer' : undefined}>
-              View case study <span>→</span>
-            </a>
+            {activeProject.caseStudyPath ? (
+              <AppLink to={activeProject.caseStudyPath}>View case study <span>→</span></AppLink>
+            ) : (
+              <a href={caseStudyUrl} target={activeProject.projectUrl ? '_blank' : undefined} rel={activeProject.projectUrl ? 'noreferrer' : undefined}>
+                View case study <span>→</span>
+              </a>
+            )}
           </footer>
         </article>
       </div>

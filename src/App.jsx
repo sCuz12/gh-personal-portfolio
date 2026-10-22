@@ -4,14 +4,18 @@ import { useCustomCursor } from './hooks/useCustomCursor';
 import { useRevealOnScroll } from './hooks/useRevealOnScroll';
 import { useScrollZoom } from './hooks/useScrollZoom';
 import { AboutPage } from './pages/AboutPage';
+import { DecreeCaseStudyPage } from './pages/DecreeCaseStudyPage';
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
+import { ShopifyStockSyncCaseStudyPage } from './pages/ShopifyStockSyncCaseStudyPage';
 import { WorkPage } from './pages/WorkPage';
 import { useClientRouter } from './routing';
 
 const pages = {
   '/': HomePage,
   '/work': WorkPage,
+  '/work/decree': DecreeCaseStudyPage,
+  '/work/shopify-stock-synchronization-app': ShopifyStockSyncCaseStudyPage,
   '/services': ServicesPage,
   '/about': AboutPage,
 };

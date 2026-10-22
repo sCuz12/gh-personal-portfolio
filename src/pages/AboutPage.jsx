@@ -21,7 +21,6 @@ export function AboutPage() {
       <section className="territory shell">
         <p className="eyebrow reveal">TECHNICAL TERRITORY</p>
         {technicalTerritory.map(([category, technologies]) => <p className="reveal" key={category}><span>{category}</span>{technologies}</p>)}
-        <small>PLACEHOLDER STACK — ADJUST TO MATCH YOUR EXPERIENCE.</small>
       </section>
       <Footer />
     </>

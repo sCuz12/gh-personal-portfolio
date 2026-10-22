@@ -18,6 +18,7 @@ export const projects = [
     priority: 1,
     imageUrl: '/images/portfolio/decree/decree-thumb.png',
     projectUrl: 'https://www.getdecree.com/',
+    caseStudyPath: '/work/decree',
     galleryUrls: [
       '/images/portfolio/decree/decree-portfolio-square.png',
       '/images/portfolio/decree/decree-branded-dashboard.png',
@@ -42,6 +43,7 @@ export const projects = [
     ],
     featured: true,
     priority: 2,
+    caseStudyPath: '/work/shopify-stock-synchronization-app',
   },
   {
     id: '16',
