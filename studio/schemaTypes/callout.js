@@ -9,13 +9,13 @@ export const callout = defineType({
       name: 'tone',
       title: 'Tone',
       type: 'string',
-      initialValue: 'note',
+      initialValue: 'decision',
       options: {
         layout: 'radio',
         list: [
-          { title: 'Note', value: 'note' },
-          { title: 'Information', value: 'info' },
-          { title: 'Warning', value: 'warning' },
+          { title: 'Decision', value: 'decision' },
+          { title: 'Trade-off', value: 'tradeoff' },
+          { title: 'Pitfall', value: 'pitfall' },
         ],
       },
       validation: (rule) => rule.required(),

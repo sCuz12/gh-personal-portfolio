@@ -1,6 +1,6 @@
 import { PortableText } from 'next-sanity';
-import { Highlight, themes } from 'prism-react-renderer';
 import { urlForImage } from '../sanity/image';
+import { ArticleCodeBlock } from './ArticleCodeBlock';
 
 function textFromBlock(value) {
   return (value.children ?? []).map((child) => child.text).join(' ');
@@ -14,29 +14,6 @@ export function headingId(value) {
     .replace(/\s+/g, '-');
 }
 
-function CodeBlock({ value }) {
-  const language = value.language || 'text';
-  const code = value.code || '';
-
-  return (
-    <figure className="article-code">
-      <figcaption><span>{value.filename || 'CODE'}</span><span>{language.toUpperCase()}</span></figcaption>
-      <Highlight theme={themes.nightOwl} code={code} language={language}>
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className} style={style}>
-            {tokens.map((line, lineIndex) => (
-              <div key={lineIndex} {...getLineProps({ line })}>
-                <span className="article-code-line">{String(lineIndex + 1).padStart(2, '0')}</span>
-                {line.map((token, tokenIndex) => <span key={tokenIndex} {...getTokenProps({ token })} />)}
-              </div>
-            ))}
-          </pre>
-        )}
-      </Highlight>
-    </figure>
-  );
-}
-
 const components = {
   block: {
     h2: ({ children, value }) => <h2 id={headingId(value)}>{children}</h2>,
@@ -48,6 +25,7 @@ const components = {
       const external = /^https?:\/\//.test(value?.href ?? '');
       return <a href={value?.href} target={value?.blank || external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>{children}</a>;
     },
+    articleLink: ({ children, value }) => <a href={`/brain/${value?.slug}`}>{children}</a>,
   },
   types: {
     image: ({ value }) => {
@@ -60,8 +38,8 @@ const components = {
         </figure>
       );
     },
-    code: CodeBlock,
-    codeBlock: CodeBlock,
+    code: ArticleCodeBlock,
+    codeBlock: ArticleCodeBlock,
     callout: ({ value }) => (
       <aside className={`article-callout tone-${value.tone || 'note'}`}>
         <span>{value.tone || 'note'}</span>

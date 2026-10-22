@@ -1,73 +1,100 @@
 import Link from 'next/link';
-import { ArticleCard } from '../../src/components/ArticleCard';
+import { ArticleRow, ArticleStatus } from '../../src/components/ArticleRow';
 import { Footer } from '../../src/components/Footer';
-import { getBrainArticles, getTopics } from '../../src/sanity/articles';
+import { getBrainArticles, getBrainStats, getTopics } from '../../src/sanity/articles';
 
 export const metadata = {
   title: 'Brain',
-  description: 'Writing by George Hadjisavva about backend systems, AI workflows, developer tooling, and product engineering.',
+  description: 'Notes by George Hadjisavva on backend systems, AI agents, MCP, and building software in public.',
 };
 
+const articleTypes = [
+  { value: '', label: 'All' },
+  { value: 'essay', label: 'Essays' },
+  { value: 'note', label: 'Notes' },
+  { value: 'log', label: 'Logs' },
+];
+
+const articleStatuses = ['thinking', 'tested', 'shipped'];
+
+function filterHref(current, changes) {
+  const next = new URLSearchParams();
+  const filters = { ...current, ...changes };
+  Object.entries(filters).forEach(([key, value]) => value && next.set(key, value));
+  const query = next.toString();
+  return query ? `/brain?${query}` : '/brain';
+}
+
+function relativeDate(date) {
+  if (!date) return 'recently';
+  const days = Math.max(0, Math.floor((Date.now() - new Date(date).getTime()) / 86400000));
+  if (days === 0) return 'today';
+  if (days === 1) return '1 day ago';
+  return `${days} days ago`;
+}
+
 export default async function BrainPage({ searchParams }) {
-  const filters = await searchParams;
-  const query = typeof filters?.q === 'string' ? filters.q : '';
-  const topic = typeof filters?.topic === 'string' ? filters.topic : '';
-  const [articles, topics] = await Promise.all([
-    getBrainArticles({ query, topic }),
+  const params = await searchParams;
+  const filters = {
+    q: typeof params?.q === 'string' ? params.q : '',
+    topic: typeof params?.topic === 'string' ? params.topic : '',
+    type: typeof params?.type === 'string' ? params.type : '',
+    status: typeof params?.status === 'string' ? params.status : '',
+  };
+  const [articles, topics, stats] = await Promise.all([
+    getBrainArticles(filters),
     getTopics(),
+    getBrainStats(),
   ]);
-  const featuredArticle = !query && !topic ? articles.find((article) => article.featured) ?? articles[0] : null;
-  const remainingArticles = featuredArticle ? articles.filter((article) => article._id !== featuredArticle._id) : articles;
+  const hasFilters = Object.values(filters).some(Boolean);
+  const featuredArticle = !hasFilters ? articles.find((article) => article.featured && article.type === 'essay') ?? null : null;
+  const rows = featuredArticle ? articles.filter((article) => article._id !== featuredArticle._id) : articles;
 
   return (
     <>
-      <article className="brain-page">
-        <header className="brain-hero shell">
+      <main className="brain-page">
+        <header className="brain-index-head shell">
           <div>
-            <p className="eyebrow">GEORGE’S BRAIN / FIELD NOTES</p>
-            <h1>Thinking<br /><em>in systems.</em></h1>
+            <p className="eyebrow">GH_ / KNOWLEDGE SYSTEM</p>
+            <h1>BRAIN_</h1>
+            <p>Notes on backend systems, AI agents and building in public.</p>
+            <span>{stats.count} NOTES · {stats.topicCount} TOPICS · LAST UPDATED {relativeDate(stats.lastUpdated)}</span>
           </div>
-          <div className="brain-hero-note">
-            <span>{String(articles.length).padStart(2, '0')} ARTICLES</span>
-            <p>Notes on backend architecture, agentic workflows, developer tools, and the decisions behind shipped software.</p>
-          </div>
+          <form action="/brain" method="get" className="brain-search">
+            {filters.topic && <input type="hidden" name="topic" value={filters.topic} />}
+            {filters.type && <input type="hidden" name="type" value={filters.type} />}
+            {filters.status && <input type="hidden" name="status" value={filters.status} />}
+            <label htmlFor="brain-search">⌘K SEARCH</label>
+            <input id="brain-search" name="q" defaultValue={filters.q} placeholder="Go, agents, architecture…" />
+          </form>
         </header>
 
-        <section className="brain-controls shell" aria-label="Filter articles">
-          <form action="/brain" method="get">
-            <label htmlFor="brain-search">SEARCH THE BRAIN</label>
-            <div><input id="brain-search" name="q" defaultValue={query} placeholder="Agents, Go, architecture…" /><button type="submit">SEARCH →</button></div>
-          </form>
-          <nav aria-label="Article topics">
-            <Link className={!topic ? 'active' : ''} href={query ? `/brain?q=${encodeURIComponent(query)}` : '/brain'}>ALL</Link>
-            {topics.map((item) => (
-              <Link
-                className={topic === item.slug ? 'active' : ''}
-                href={`/brain?topic=${encodeURIComponent(item.slug)}${query ? `&q=${encodeURIComponent(query)}` : ''}`}
-                key={item._id}
-              >
-                {item.title}
-              </Link>
-            ))}
-          </nav>
+        <section className="brain-filter-panel shell" aria-label="Filter articles">
+          <div><strong>TYPE:</strong><nav>{articleTypes.map((item) => <Link className={filters.type === item.value ? 'active' : ''} href={filterHref(filters, { type: item.value })} key={item.label}>{item.label}</Link>)}</nav></div>
+          <div><strong>TOPIC:</strong><nav><Link className={!filters.topic ? 'active' : ''} href={filterHref(filters, { topic: '' })}>all</Link>{topics.map((item) => <Link className={filters.topic === item.slug ? 'active' : ''} href={filterHref(filters, { topic: item.slug })} key={item._id}>{item.slug}</Link>)}</nav></div>
+          <div><strong>STATUS:</strong><nav>{articleStatuses.map((status) => <Link className={filters.status === status ? 'active' : ''} href={filterHref(filters, { status: filters.status === status ? '' : status })} key={status}><ArticleStatus status={status} /></Link>)}</nav></div>
         </section>
 
         {featuredArticle && (
           <section className="brain-featured shell">
-            <p className="eyebrow">FEATURED NOTE</p>
-            <ArticleCard article={featuredArticle} featured />
+            <p className="eyebrow">FEATURED ESSAY</p>
+            <Link href={`/brain/${featuredArticle.slug}`}>
+              <span>{featuredArticle.type} · {featuredArticle.topics?.[0]?.title || 'General'} · {featuredArticle.readingTime} MIN</span>
+              <h2>{featuredArticle.title}</h2>
+              <p>{featuredArticle.excerpt}</p>
+              <ArticleStatus status={featuredArticle.status} />
+              <b>READ ESSAY →</b>
+            </Link>
           </section>
         )}
 
         <section className="brain-archive shell" aria-live="polite">
-          <header><p className="eyebrow">{query || topic ? 'FILTERED NOTES' : 'LATEST NOTES'}</p><span>{remainingArticles.length} RESULTS</span></header>
-          {remainingArticles.length ? (
-            <div className="brain-grid">{remainingArticles.map((article) => <ArticleCard article={article} key={article._id} />)}</div>
-          ) : (
-            <div className="brain-empty"><strong>NOTHING MATCHED.</strong><p>Try another phrase or clear the active topic.</p><Link href="/brain">CLEAR FILTERS →</Link></div>
+          <header><p className="eyebrow">{hasFilters ? 'FILTERED NOTES' : 'LATEST NOTES'}</p><span>{rows.length} RESULTS</span></header>
+          {rows.length ? rows.map((article) => <ArticleRow article={article} key={article._id} />) : (
+            <div className="brain-empty"><strong>Nothing here yet.</strong><a href="mailto:georgehadjisavvas12@gmail.com?subject=Brain%20topic%20suggestion">Suggest a topic →</a></div>
           )}
         </section>
-      </article>
+      </main>
       <Footer />
     </>
   );

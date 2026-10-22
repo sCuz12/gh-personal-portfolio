@@ -11,6 +11,24 @@ export const article = defineType({
   fields: [
     defineField({ name: 'title', title: 'Title', type: 'string', group: 'content', validation: (rule) => rule.required() }),
     defineField({
+      name: 'type',
+      title: 'Format',
+      type: 'string',
+      group: 'content',
+      initialValue: 'note',
+      options: { layout: 'radio', list: [{ title: 'Essay', value: 'essay' }, { title: 'Note', value: 'note' }, { title: 'Log', value: 'log' }] },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      group: 'content',
+      initialValue: 'thinking',
+      options: { layout: 'radio', list: [{ title: 'Thinking', value: 'thinking' }, { title: 'Tested', value: 'tested' }, { title: 'Shipped', value: 'shipped' }] },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -55,6 +73,17 @@ export const article = defineType({
       initialValue: () => new Date().toISOString(),
       validation: (rule) => rule.required(),
     }),
+    defineField({ name: 'updatedAt', title: 'Last meaningfully updated', type: 'datetime', group: 'content' }),
+    defineField({
+      name: 'relatedProject',
+      title: 'Related project',
+      type: 'object',
+      group: 'content',
+      fields: [
+        defineField({ name: 'title', title: 'Project title', type: 'string', validation: (rule) => rule.required() }),
+        defineField({ name: 'href', title: 'Case study path', type: 'string', description: 'Example: /work/decree', validation: (rule) => rule.required() }),
+      ],
+    }),
     defineField({
       name: 'body',
       title: 'Body',
@@ -79,6 +108,12 @@ export const article = defineType({
                   defineField({ name: 'href', title: 'URL', type: 'url', validation: (rule) => rule.uri({ scheme: ['http', 'https', 'mailto'] }) }),
                   defineField({ name: 'blank', title: 'Open in new tab', type: 'boolean', initialValue: false }),
                 ],
+              },
+              {
+                name: 'articleLink',
+                title: 'Brain article',
+                type: 'object',
+                fields: [defineField({ name: 'article', title: 'Article', type: 'reference', to: [{ type: 'article' }], validation: (rule) => rule.required() })],
               },
             ],
           },

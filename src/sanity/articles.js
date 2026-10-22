@@ -6,9 +6,12 @@ const articleCardProjection = `{
   title,
   "slug": slug.current,
   excerpt,
+  type,
+  status,
   coverImage,
   featured,
   publishedAt,
+  updatedAt,
   body,
   "topics": topics[]->{title, "slug": slug.current}
 }`;
@@ -18,12 +21,17 @@ const articleDetailProjection = `{
   title,
   "slug": slug.current,
   excerpt,
+  type,
+  status,
   coverImage,
   featured,
   publishedAt,
+  updatedAt,
+  relatedProject,
   body,
   seo,
-  "topics": topics[]->{title, "slug": slug.current}
+  "topics": topics[]->{title, "slug": slug.current},
+  "body": body[]{..., markDefs[]{..., _type == "articleLink" => {"slug": article->slug.current}}}
 }`;
 
 function countBodyWords(body = []) {
@@ -46,6 +54,8 @@ function normalizeArticle(article) {
   if (!article) return null;
   return {
     ...article,
+    type: article.type || 'note',
+    status: article.status || 'thinking',
     readingTime: Math.max(1, Math.ceil(countBodyWords(article.body) / 220)),
   };
 }
@@ -75,16 +85,35 @@ export async function getLatestArticles(limit = 3) {
   return (articles ?? []).map(normalizeArticle);
 }
 
-export async function getBrainArticles({ query = '', topic = '' } = {}) {
+export async function getBrainArticles({ query = '', topic = '', type = '', status = '' } = {}) {
   const search = query.trim() ? `*${query.trim()}*` : '';
   const articles = await fetchContent(
     `*[
       _type == "article" &&
       defined(publishedAt) &&
       ($topic == "" || $topic in topics[]->slug.current) &&
+      ($type == "" || coalesce(type, "note") == $type) &&
+      ($status == "" || coalesce(status, "thinking") == $status) &&
       ($search == "" || title match $search || excerpt match $search)
     ] | order(featured desc, publishedAt desc) ${articleCardProjection}`,
-    { search, topic },
+    { search, topic, type, status },
+  );
+  return (articles ?? []).map(normalizeArticle);
+}
+
+export async function getBrainStats() {
+  const stats = await fetchContent(`{
+    "count": count(*[_type == "article" && defined(publishedAt)]),
+    "topicCount": count(*[_type == "topic"]),
+    "lastUpdated": (*[_type == "article" && defined(publishedAt)] | order(coalesce(updatedAt, publishedAt) desc)[0]) {"value": coalesce(updatedAt, publishedAt)}.value
+  }`);
+  return stats ?? { count: 0, topicCount: 0, lastUpdated: null };
+}
+
+export async function getBacklinks(articleId) {
+  const articles = await fetchContent(
+    `*[_type == "article" && defined(publishedAt) && references($articleId)] | order(publishedAt desc) ${articleCardProjection}`,
+    { articleId },
   );
   return (articles ?? []).map(normalizeArticle);
 }
