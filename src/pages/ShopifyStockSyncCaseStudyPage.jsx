@@ -63,22 +63,6 @@ export function ShopifyStockSyncCaseStudyPage() {
           </div>
         </section>
 
-        <section className="decree-interface stock-sync-operation" aria-labelledby="operation-title">
-          <div className="shell decree-section-heading">
-            <p className="eyebrow">04 / THE OPERATION</p>
-            <h2 id="operation-title">A small CLI.<br /><em>A clear run.</em></h2>
-            <p>The interface is operational: explicit commands, visible stages, and enough context to understand every run.</p>
-          </div>
-          <div className="shell operation-console-grid">
-            {caseStudy.operationStages.map((stage, index) => (
-              <article key={stage.label}>
-                <header><span>{String(index + 1).padStart(2, '0')}</span><strong>{stage.label}</strong></header>
-                <code>{stage.command}</code>
-                <p><i />{stage.output}</p>
-              </article>
-            ))}
-          </div>
-        </section>
 
         <section className="decree-retrospective shell" aria-labelledby="stock-sync-result-title">
           <div>
@@ -93,7 +77,7 @@ export function ShopifyStockSyncCaseStudyPage() {
           </div>
         </section>
 
-        <AppLink to="/work" className="next-project next-project-symvaseis" cursor="NEXT">
+        <AppLink to="/work/symvaseis-cy-public-procurement-explorer" className="next-project next-project-symvaseis" cursor="NEXT">
           <span><small>NEXT PROJECT</small><strong>Symvaseis.cy<br />Procurement Explorer</strong></span>
           <div className="next-project-surface" aria-hidden="true">
             <i>DATA PLATFORM</i><b>Σ</b><em>→</em>

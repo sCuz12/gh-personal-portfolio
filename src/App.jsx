@@ -8,6 +8,7 @@ import { DecreeCaseStudyPage } from './pages/DecreeCaseStudyPage';
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
 import { ShopifyStockSyncCaseStudyPage } from './pages/ShopifyStockSyncCaseStudyPage';
+import { SymvaseisCaseStudyPage } from './pages/SymvaseisCaseStudyPage';
 import { WorkPage } from './pages/WorkPage';
 import { useClientRouter } from './routing';
 
@@ -16,6 +17,7 @@ const pages = {
   '/work': WorkPage,
   '/work/decree': DecreeCaseStudyPage,
   '/work/shopify-stock-synchronization-app': ShopifyStockSyncCaseStudyPage,
+  '/work/symvaseis-cy-public-procurement-explorer': SymvaseisCaseStudyPage,
   '/services': ServicesPage,
   '/about': AboutPage,
 };
