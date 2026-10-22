@@ -13,11 +13,13 @@ const formatter = new Intl.DateTimeFormat('en-GB', {
 });
 
 const getCurrentTime = () => formatter.format(new Date());
+const INITIAL_TIME = '--:--:--';
 
 export function LocalTime() {
-  const [currentTime, setCurrentTime] = useState(getCurrentTime);
+  const [currentTime, setCurrentTime] = useState(INITIAL_TIME);
 
   useEffect(() => {
+    setCurrentTime(getCurrentTime());
     const interval = window.setInterval(() => setCurrentTime(getCurrentTime()), 1000);
     return () => window.clearInterval(interval);
   }, []);
