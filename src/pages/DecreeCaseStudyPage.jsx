@@ -69,10 +69,10 @@ export function DecreeCaseStudyPage() {
           </div>
         </section>
 
-        <AppLink to="/work/shopify-stock-synchronization-app" className="next-project" cursor="NEXT">
-          <span><small>NEXT PROJECT</small><strong>Shopify Stock<br />Synchronization</strong></span>
+        <AppLink to="/work/problem-miner-ai-demand-discovery" className="next-project next-project-problem-miner" cursor="NEXT">
+          <span><small>NEXT PROJECT</small><strong>Problem Miner<br />Demand Discovery</strong></span>
           <div className="next-project-surface" aria-hidden="true">
-            <i>BACKEND AUTOMATION</i><b>SS</b><em>→</em>
+            <i>AI RESEARCH PLATFORM</i><b>PM</b><em>→</em>
           </div>
         </AppLink>
       </article>

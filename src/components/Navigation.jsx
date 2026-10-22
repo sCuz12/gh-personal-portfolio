@@ -5,6 +5,7 @@ const navigationItems = [
   ['/work', <>Work <sup>04</sup></>],
   ['/services', 'Services'],
   ['/about', 'About'],
+  ['/ask-my-cv', 'Ask my CV'],
 ];
 
 export function Navigation({ currentPath }) {

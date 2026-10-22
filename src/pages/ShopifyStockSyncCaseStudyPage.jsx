@@ -28,7 +28,7 @@ export function ShopifyStockSyncCaseStudyPage() {
       <article className="decree-case-study stock-sync-case-study">
         <header className="decree-case-hero shell">
           <div className="decree-case-heading stock-sync-heading">
-            <p className="eyebrow">CASE STUDY 02 / BACKEND AUTOMATION</p>
+            <p className="eyebrow">CASE STUDY 03 / BACKEND AUTOMATION</p>
             <h1>Stock<br /><em>Sync</em></h1>
             <p>{caseStudy.subtitle}</p>
           </div>

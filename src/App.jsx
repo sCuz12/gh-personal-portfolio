@@ -4,8 +4,10 @@ import { useCustomCursor } from './hooks/useCustomCursor';
 import { useRevealOnScroll } from './hooks/useRevealOnScroll';
 import { useScrollZoom } from './hooks/useScrollZoom';
 import { AboutPage } from './pages/AboutPage';
+import { CvAssistantPage } from './pages/CvAssistantPage';
 import { DecreeCaseStudyPage } from './pages/DecreeCaseStudyPage';
 import { HomePage } from './pages/HomePage';
+import { ProblemMinerCaseStudyPage } from './pages/ProblemMinerCaseStudyPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { ShopifyStockSyncCaseStudyPage } from './pages/ShopifyStockSyncCaseStudyPage';
 import { SymvaseisCaseStudyPage } from './pages/SymvaseisCaseStudyPage';
@@ -16,10 +18,12 @@ const pages = {
   '/': HomePage,
   '/work': WorkPage,
   '/work/decree': DecreeCaseStudyPage,
+  '/work/problem-miner-ai-demand-discovery': ProblemMinerCaseStudyPage,
   '/work/shopify-stock-synchronization-app': ShopifyStockSyncCaseStudyPage,
   '/work/symvaseis-cy-public-procurement-explorer': SymvaseisCaseStudyPage,
   '/services': ServicesPage,
   '/about': AboutPage,
+  '/ask-my-cv': CvAssistantPage,
 };
 
 export function App() {

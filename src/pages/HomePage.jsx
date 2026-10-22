@@ -53,12 +53,15 @@ function AudiencePaths() {
       <section className="paths shell">
         <p className="eyebrow reveal">CHOOSE YOUR PATH</p>
         <div className="path-grid">
-          <TiltCard to="/work" className="path recruiter">
-            <span>01 / RECRUITERS & TEAMS</span>
-            <h2>I’m hiring<br />an engineer.</h2>
-            <p>See how I reason about architecture, trade-offs, reliability, and product delivery.</p>
-            <b>VIEW EXPERIENCE ↗</b>
-          </TiltCard>
+          <div className="path-with-secondary">
+            <TiltCard to="/work" className="path recruiter">
+              <span>01 / RECRUITERS & TEAMS</span>
+              <h2>I’m hiring<br />an engineer.</h2>
+              <p>See how I reason about architecture, trade-offs, reliability, and product delivery.</p>
+              <b>VIEW EXPERIENCE ↗</b>
+            </TiltCard>
+            <AppLink to="/ask-my-cv" className="path-secondary-link">ASK MY CV <span>→</span></AppLink>
+          </div>
           <TiltCard to="/services" className="path client">
             <span>02 / FOUNDERS & COMPANIES</span>
             <h2>I need something<br />built.</h2>

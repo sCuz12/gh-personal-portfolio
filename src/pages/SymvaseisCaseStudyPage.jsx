@@ -12,7 +12,7 @@ export function SymvaseisCaseStudyPage() {
       <article className="decree-case-study symvaseis-case-study">
         <header className="decree-case-hero shell">
           <div className="decree-case-heading symvaseis-heading">
-            <p className="eyebrow">CASE STUDY 03 / DATA PLATFORM</p>
+            <p className="eyebrow">CASE STUDY 04 / DATA PLATFORM</p>
             <h1>Symvaseis<span>.cy</span></h1>
             <p>{caseStudy.subtitle}</p>
           </div>

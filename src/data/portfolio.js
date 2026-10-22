@@ -45,6 +45,7 @@ export const projects = [
     priority: 2,
     imageUrl: '/images/portfolio/problem-miner/problem-miner-thumb.png',
     projectUrl: 'https://problem-miner-landing.vercel.app/',
+    caseStudyPath: '/work/problem-miner-ai-demand-discovery',
   },
   {
     id: '12',
