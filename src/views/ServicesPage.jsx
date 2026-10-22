@@ -3,13 +3,14 @@ import { Footer } from '../components/Footer';
 import { PageHero } from '../components/PageHero';
 import { SectionHeading } from '../components/SectionHeading';
 import { services } from '../data/portfolio';
+import { siteConfig } from '../config/site';
 
 export function ServicesPage() {
   return (
     <>
       <PageHero kicker="02 / SERVICES" title={<>Bring the hard part.<br /><em>I’ll build the path.</em></>}>
         <p>For companies that need more than a prototype: technical clarity, production-minded engineering, and one partner across the system.</p>
-        <a className="button" href="mailto:hello@example.com">START A CONVERSATION ↗</a>
+        <a className="button" href={siteConfig.contact.mailto}>START A CONVERSATION ↗</a>
       </PageHero>
       <section className="services shell">
         {services.map(([id, title, description]) => (

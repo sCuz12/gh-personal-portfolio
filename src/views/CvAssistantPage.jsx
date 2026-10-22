@@ -3,6 +3,7 @@ import { CopyQuestionButton } from '../components/CopyQuestionButton';
 import { Footer } from '../components/Footer';
 import { cvAssistantQuestions } from '../data/cvAssistant';
 import { profileLinks } from '../data/profileLinks';
+import { siteConfig } from '../config/site';
 
 const assistantUrl = 'https://georgehadjisavva-conversations-me.hf.space/?__theme=dark';
 
@@ -60,7 +61,7 @@ export function CvAssistantPage() {
                 <a href={profileLinks.cv} className="cv-primary-action" target="_blank" rel="noreferrer">
                   DOWNLOAD CV <span>↗</span>
                 </a>
-                <a href="mailto:hello@example.com" className="cv-secondary-action">EMAIL GEORGE <span>↗</span></a>
+                <a href={siteConfig.contact.mailto} className="cv-secondary-action">EMAIL GEORGE <span>↗</span></a>
               </div>
             </section>
           </aside>

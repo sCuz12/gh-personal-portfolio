@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArticleRow, ArticleStatus } from '../../src/components/ArticleRow';
 import { Footer } from '../../src/components/Footer';
 import { getBrainArticles, getBrainStats, getTopics } from '../../src/sanity/articles';
+import { siteConfig } from '../../src/config/site';
 
 export const metadata = {
   title: 'Brain',
@@ -91,7 +92,7 @@ export default async function BrainPage({ searchParams }) {
         <section className="brain-archive shell" aria-live="polite">
           <header><p className="eyebrow">{hasFilters ? 'FILTERED NOTES' : 'LATEST NOTES'}</p><span>{rows.length} RESULTS</span></header>
           {rows.length ? rows.map((article) => <ArticleRow article={article} key={article._id} />) : (
-            <div className="brain-empty"><strong>Nothing here yet.</strong><a href="mailto:georgehadjisavvas12@gmail.com?subject=Brain%20topic%20suggestion">Suggest a topic →</a></div>
+            <div className="brain-empty"><strong>Nothing here yet.</strong><a href={`${siteConfig.contact.mailto}?subject=Brain%20topic%20suggestion`}>Suggest a topic →</a></div>
           )}
         </section>
       </main>

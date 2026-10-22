@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { AppLink } from './AppLink';
+import { siteConfig } from '../config/site';
 
 const navigationItems = [
   ['/work', <>Work <sup>04</sup></>],
@@ -48,7 +49,7 @@ export function Navigation({ currentPath }) {
           <AppLink to="/work" className="nav-utility terminal-link" cursor="OPEN" aria-label="View work">
             &gt;_
           </AppLink>
-          <a className="nav-cta" href="mailto:hello@example.com">
+          <a className="nav-cta" href={siteConfig.contact.mailto}>
             WORK WITH ME <span>»</span>
           </a>
         </div>
