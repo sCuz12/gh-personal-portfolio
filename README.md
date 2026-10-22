@@ -4,6 +4,12 @@ A multi-page React portfolio for backend systems, agentic workflows, custom MCP 
 
 The codebase uses React, Three.js, Tailwind CSS, and Vite. Read `AGENTS.md` before contributing; it documents the architecture and engineering conventions.
 
+## Portfolio content API
+
+The site uses local data by default. To load projects from a database-backed API, copy `.env.example` to `.env.local` and set `VITE_PORTFOLIO_API_URL`.
+
+The API must implement `GET /projects` using the contract in `openapi/portfolio.yaml`. If the API is unavailable or returns an invalid payload, the site safely falls back to `src/data/portfolio.js`.
+
 ## Pages
 
 - `index.html` — positioning and separate recruiter/client paths

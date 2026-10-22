@@ -1,7 +1,7 @@
 import { Footer } from '../components/Footer';
 import { PageHero } from '../components/PageHero';
 import { SectionHeading } from '../components/SectionHeading';
-import { projects } from '../data/portfolio';
+import { useProjects } from '../hooks/useProjects';
 
 const caseStudyPoints = [
   ['THE PROBLEM', 'Long-running work crosses APIs, permissions, data sources, and ambiguous intent.'],
@@ -10,6 +10,8 @@ const caseStudyPoints = [
 ];
 
 export function WorkPage() {
+  const projects = useProjects();
+
   return (
     <>
       <PageHero kicker="01 / SELECTED WORK" title={<>Systems with<br /><em>something at stake.</em></>}>

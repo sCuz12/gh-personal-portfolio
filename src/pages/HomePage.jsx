@@ -1,6 +1,7 @@
 import { AgentNetworkScene } from '../components/AgentNetworkScene';
 import { AppLink } from '../components/AppLink';
 import { Footer } from '../components/Footer';
+import { FeaturedWork } from '../components/FeaturedWork';
 import { Marquee } from '../components/Marquee';
 import { LocalTime } from '../components/LocalTime';
 import { ProjectGrid } from '../components/ProjectGrid';
@@ -75,6 +76,7 @@ export function HomePage() {
   return (
     <>
       <Hero />
+      <FeaturedWork />
       <AudiencePaths />
       <div className="zoom-section"><ProjectGrid /></div>
       <section className="statement zoom-section">

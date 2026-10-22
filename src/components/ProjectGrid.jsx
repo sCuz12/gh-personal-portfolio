@@ -1,4 +1,4 @@
-import { projects } from '../data/portfolio';
+import { useProjects } from '../hooks/useProjects';
 import { SectionHeading } from './SectionHeading';
 import { TiltCard } from './TiltCard';
 
@@ -9,6 +9,8 @@ function getProjectMark(type) {
 }
 
 export function ProjectGrid() {
+  const projects = useProjects();
+
   return (
     <section className="work shell">
       <SectionHeading

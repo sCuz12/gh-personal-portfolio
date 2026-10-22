@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  title: Portfolio Content API
+  version: 1.0.0
+  description: Read-only public content used by the portfolio website.
+servers:
+  - url: https://api.example.com
+paths:
+  /projects:
+    get:
+      operationId: listProjects
+      summary: List published portfolio projects
+      parameters:
+        - name: featured
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: Return only featured projects when true.
+      responses:
+        '200':
+          description: Published portfolio projects ordered for display.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Project'
+components:
+  schemas:
+    Project:
+      type: object
+      additionalProperties: false
+      required: [id, slug, type, title, description, tone, year, role, technologies, featured, priority]
+      properties:
+        id: { type: string }
+        slug: { type: string }
+        type: { type: string }
+        title: { type: string }
+        description: { type: string }
+        tone: { type: string, enum: [dark, acid, paper, blue] }
+        year: { type: string }
+        role: { type: string }
+        technologies:
+          type: array
+          items: { type: string }
+        featured: { type: boolean }
+        priority: { type: integer, minimum: 0 }
+        imageUrl: { type: [string, 'null'], format: uri-reference }
+        projectUrl: { type: [string, 'null'], format: uri }
+        galleryUrls:
+          type: array
+          items: { type: string, format: uri-reference }
