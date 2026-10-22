@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { AppLink } from './AppLink';
 
@@ -5,6 +7,7 @@ const navigationItems = [
   ['/work', <>Work <sup>04</sup></>],
   ['/services', 'Services'],
   ['/about', 'About'],
+  ['/brain', 'Brain'],
   ['/ask-my-cv', 'Ask my CV'],
 ];
 
@@ -52,7 +55,7 @@ export function Navigation({ currentPath }) {
 
         <nav className={`nav-drawer ${isMenuOpen ? 'open' : ''}`} aria-hidden={!isMenuOpen}>
           {navigationItems.map(([path, label]) => (
-            <AppLink key={path} to={path} className={currentPath === path ? 'active' : ''}>
+            <AppLink key={path} to={path} className={currentPath === path || currentPath.startsWith(`${path}/`) ? 'active' : ''}>
               {label}
             </AppLink>
           ))}

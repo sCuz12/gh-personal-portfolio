@@ -15,20 +15,21 @@ Preserve those two user journeys when changing navigation, copy, or calls to act
 - Three.js for the interactive agent-network scene.
 - Tailwind CSS for reusable utilities and design tokens.
 - Custom CSS for art direction, complex motion, and WebGL framing.
-- Vite for development and production builds.
+- Next.js App Router for routing, server rendering, metadata, and production builds.
+- Sanity Studio and Content Lake for database-backed Brain articles.
 
 ## Architecture
 
 ```text
+app/              Next.js routes, layouts, metadata, and server endpoints
 src/
 ├── components/   Reusable presentational and interactive components
 ├── data/         Portfolio content and structured display data
 ├── hooks/        Browser side effects and animation behavior
-├── pages/        Route-level composition only
-├── App.jsx       Route selection and application shell
-├── routing.js    Minimal client-side navigation
-├── main.jsx      React bootstrap only
+├── views/        Existing route-level compositions
+├── sanity/       Article queries, image helpers, and CMS configuration
 └── site.css      Global visual system and complex motion styles
+studio/           Separately hosted Sanity writing studio and schemas
 ```
 
 ## Code principles
@@ -55,7 +56,7 @@ src/
 - Avoid using effects for pure data transformations.
 - Use refs for imperative animation targets, not as alternate state.
 - Prefer composition over highly configurable all-purpose components.
-- Keep route-level state in `App` or the routing module; keep local interaction state near the owning component.
+- Keep route composition in the Next.js `app/` tree; keep local interaction state near the owning component.
 
 ## Styling conventions
 

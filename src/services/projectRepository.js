@@ -1,6 +1,6 @@
 import { projects as localProjects } from '../data/portfolio';
 
-const apiBaseUrl = import.meta.env.VITE_PORTFOLIO_API_URL?.replace(/\/$/, '');
+const apiBaseUrl = process.env.NEXT_PUBLIC_PORTFOLIO_API_URL?.replace(/\/$/, '');
 
 function isProject(value) {
   return value

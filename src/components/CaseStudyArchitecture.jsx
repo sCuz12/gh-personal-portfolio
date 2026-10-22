@@ -1,3 +1,5 @@
+'use client';
+
 import { useActiveArchitectureStep } from '../hooks/useActiveArchitectureStep';
 
 export function CaseStudyArchitecture({

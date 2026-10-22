@@ -3,6 +3,8 @@ node_modules/
 
 # Generated builds and test output
 dist/
+.next/
+studio/dist/
 coverage/
 
 # Environment and local configuration
@@ -13,6 +15,7 @@ coverage/
 
 # Tool caches
 .vite/
+.sanity/
 .eslintcache
 
 # Logs

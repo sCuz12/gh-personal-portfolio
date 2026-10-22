@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { AppLink } from './AppLink';
 import { useProjects } from '../hooks/useProjects';
