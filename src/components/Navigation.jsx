@@ -12,7 +12,7 @@ const navigationItems = [
   ['/ask-my-cv', 'Ask my CV'],
 ];
 
-export function Navigation({ currentPath }) {
+export function Navigation({ currentPath, onOpenCommandPalette }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLightTheme, setIsLightTheme] = useState(false);
 
@@ -38,6 +38,14 @@ export function Navigation({ currentPath }) {
         </button>
 
         <div className="nav-actions">
+          <button
+            className="nav-utility command-trigger"
+            type="button"
+            aria-label="Open command palette"
+            onClick={onOpenCommandPalette}
+          >
+            ⌘K
+          </button>
           <button
             className="nav-utility"
             type="button"

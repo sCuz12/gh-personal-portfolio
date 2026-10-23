@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { CommandPalette } from './CommandPalette';
 import { CustomScrollbar } from './CustomScrollbar';
 import { Navigation } from './Navigation';
 import { useCustomCursor } from '../hooks/useCustomCursor';
@@ -10,6 +11,9 @@ import { useScrollZoom } from '../hooks/useScrollZoom';
 
 export function SiteChrome({ children }) {
   const pathname = usePathname();
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+  const openCommandPalette = useCallback(() => setIsCommandPaletteOpen(true), []);
+  const closeCommandPalette = useCallback(() => setIsCommandPaletteOpen(false), []);
 
   useRevealOnScroll(pathname);
   useCustomCursor(pathname);
@@ -17,6 +21,7 @@ export function SiteChrome({ children }) {
 
   useEffect(() => {
     document.querySelector('.app')?.classList.remove('leaving');
+    setIsCommandPaletteOpen(false);
   }, [pathname]);
 
   return (
@@ -25,7 +30,12 @@ export function SiteChrome({ children }) {
       <div className="cursor-ring" />
       <div className="transition">GH_</div>
       <CustomScrollbar />
-      <Navigation currentPath={pathname} />
+      <Navigation currentPath={pathname} onOpenCommandPalette={openCommandPalette} />
+      <CommandPalette
+        isOpen={isCommandPaletteOpen}
+        onOpen={openCommandPalette}
+        onClose={closeCommandPalette}
+      />
       <main id="page-content">{children}</main>
     </div>
   );

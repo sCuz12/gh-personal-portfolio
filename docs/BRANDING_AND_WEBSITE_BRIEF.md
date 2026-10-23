@@ -152,6 +152,7 @@ The header uses a dark technical-console treatment:
 - Terminal-style work shortcut (`>_`)
 - Pastel-lime `WORK WITH ME »` call to action
 - Expandable menu containing Work, Services, and About
+- Keyboard-first `⌘K` / `Ctrl+K` command palette offering direct access to Ask My CV and the Work page
 
 ### Custom scrollbar
 
@@ -301,7 +302,23 @@ Presentation:
 - Pastel-lime treatment for companies
 - 3D pointer tilt and light response
 
-### Section 4 — Selected systems grid
+### Section 4 — Ask My CV preview
+
+Purpose:
+
+- Give recruiters a memorable way to explore George’s experience
+- Demonstrate the CV assistant without loading the external chat on the homepage
+- Direct interested visitors to the dedicated full assistant experience
+
+Presentation:
+
+- Native two-column editorial and console-style section
+- Three example questions drawn from the assistant’s existing prompt set
+- Pastel-lime CTA leading to `/ask-my-cv`
+- Clear note that the CV and direct conversation remain authoritative
+- No iframe or external assistant request on the homepage
+
+### Section 5 — Selected systems grid
 
 Purpose:
 
@@ -317,7 +334,7 @@ Current entries:
 
 **Important:** These four entries are currently conceptual case-study placeholders. They are clearly labelled in the implementation and must not be presented as verified client or employment work until replaced with real facts.
 
-### Section 5 — Philosophy statement
+### Section 6 — Philosophy statement
 
 Purpose:
 
@@ -328,7 +345,7 @@ Current message:
 
 > Software should be powerful underneath. Calm on the surface.
 
-### Section 6 — Contact footer
+### Section 7 — Contact footer
 
 Purpose:
 
@@ -558,6 +575,7 @@ Current motion includes:
 - Marquee/ticker motion
 - Page-transition overlay
 - Custom draggable `GH` scrollbar
+- Command-palette entrance and keyboard focus treatment
 
 Motion principles to preserve:
 
