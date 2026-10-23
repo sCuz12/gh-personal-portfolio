@@ -1230,46 +1230,113 @@
 }
 
 @media (max-width: 800px) {
-  .project-choreography {
-    height: auto !important;
-  }
-
   .choreography-sticky {
-    position: relative;
-    display: block;
-    height: auto;
-    min-height: 100svh;
-    padding-block: 70px;
-    overflow: visible;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 12px;
+    height: 100svh;
+    min-height: 560px;
+    padding-block: 14px;
   }
 
   .choreography-index {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 0;
+  }
+
+  .choreography-index ol {
+    display: flex;
+    gap: 4px;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .choreography-index li {
+    border-left: 0;
+    border-bottom: 1px solid #2e2e2e;
+  }
+
+  .choreography-index li.active {
+    border-color: var(--acid);
+    transform: none;
+  }
+
+  .choreography-index button {
+    display: block;
+    width: 34px;
+    padding: 8px 6px;
+  }
+
+  .choreography-index button strong {
     display: none;
   }
 
   .choreography-project {
-    display: none;
-  }
-
-  .choreography-project:first-of-type {
-    display: grid;
-    min-height: 820px;
+    min-height: 0;
   }
 
   .choreography-header {
-    grid-template-columns: 55px 1fr;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    gap: 10px;
+    min-height: 76px;
   }
 
   .project-status {
-    grid-column: 2;
+    grid-column: auto;
+    font-size: 8px;
   }
 
   .choreography-number {
-    font-size: 34px;
+    font-size: 29px;
+  }
+
+  .choreography-header h2 {
+    margin-top: 5px;
+    font-size: clamp(25px, 8vw, 38px);
   }
 
   .choreography-stage {
-    min-height: 470px;
+    min-height: 0;
+  }
+
+  .choreography-surface {
+    padding: 48px 4% 18px;
+  }
+
+  .surface-placeholder {
+    width: 92%;
+    min-height: 68%;
+    box-shadow: 10px 13px 0 rgba(0, 0, 0, 0.14);
+  }
+
+  .surface-dashboard {
+    grid-template-columns: 46px 1fr;
+    min-height: 220px;
+  }
+
+  .surface-dashboard aside {
+    gap: 18px;
+    padding: 18px 8px;
+  }
+
+  .surface-main {
+    padding: 24px 18px;
+  }
+
+  .surface-main > strong {
+    margin: 38px 0 25px;
+    font-size: clamp(24px, 8vw, 38px);
+  }
+
+  .surface-main > div i {
+    height: 42px;
+  }
+
+  .choreography-underneath {
+    padding: 54px 12px 12px;
   }
 
   .diagram-grid {
@@ -1281,8 +1348,48 @@
     display: none;
   }
 
+  .diagram-node {
+    min-height: 0;
+    padding: 10px 12px;
+  }
+
+  .diagram-node strong {
+    margin: 7px 0 3px;
+    font-size: 14px;
+  }
+
   .choreography-footer {
     grid-template-columns: 1fr;
+    gap: 6px;
+    min-height: 126px;
+    padding-top: 10px;
+  }
+
+  .choreography-footer p {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 11px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .choreography-summary {
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .choreography-technologies {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .choreography-technologies li {
+    flex: 0 0 auto;
+  }
+
+  .choreography-footer a {
+    justify-content: space-between;
+    padding: 7px 0;
   }
 }
 
