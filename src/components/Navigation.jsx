@@ -54,7 +54,7 @@ export function Navigation({ currentPath, onOpenCommandPalette }) {
           >
             {isLightTheme ? '☾' : '☼'}
           </button>
-          <AppLink to="/work" className="nav-utility terminal-link" cursor="OPEN" aria-label="View work">
+          <AppLink to="/text" className="nav-utility terminal-link" cursor="OPEN" aria-label="Open text mode">
             &gt;_
           </AppLink>
           <a className="nav-cta" href={siteConfig.contact.mailto}>

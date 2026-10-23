@@ -448,6 +448,265 @@
   }
 }
 
+/* Plain-text portfolio mode */
+.text-mode-app,
+.text-mode-app * {
+  cursor: auto;
+}
+
+.text-mode-app {
+  min-height: 100vh;
+  color: #dff2a6;
+  background: #080808;
+}
+
+.text-mode-app #page-content {
+  min-height: 100vh;
+}
+
+.text-mode-page {
+  width: min(calc(100% - 40px), 980px);
+  margin: 0 auto;
+  padding: 28px 0 70px;
+  color: #d7d7cf;
+  font: 14px/1.7 var(--mono);
+}
+
+.text-mode-page ::selection {
+  color: #080808;
+  background: var(--acid);
+}
+
+.text-mode-skip {
+  position: absolute;
+  left: 20px;
+  top: -60px;
+  padding: 10px 12px;
+  color: #080808;
+  background: var(--acid);
+  z-index: 2;
+}
+
+.text-mode-skip:focus {
+  top: 12px;
+}
+
+.text-mode-header {
+  position: relative;
+  padding: clamp(45px, 8vw, 90px) 0 clamp(70px, 10vw, 120px);
+  border-bottom: 1px dashed #4a4a45;
+}
+
+.text-mode-header > p:first-child,
+.text-mode-section > header span {
+  color: var(--acid);
+  letter-spacing: 0.09em;
+}
+
+.text-mode-header pre {
+  margin: 40px 0;
+  color: #777770;
+  font: inherit;
+  white-space: pre-wrap;
+}
+
+.text-mode-header h1 {
+  margin: 0;
+  color: #f1efe8;
+  font: 500 clamp(44px, 8vw, 88px)/0.95 var(--mono);
+  letter-spacing: -0.07em;
+}
+
+.text-mode-header .text-mode-role {
+  margin: 26px 0 0;
+  color: var(--acid);
+  font-size: clamp(17px, 2.4vw, 24px);
+}
+
+.text-mode-header > p:not(:first-child):not(.text-mode-role) {
+  max-width: 760px;
+}
+
+.text-mode-header nav,
+.text-mode-links,
+.text-mode-section address {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+}
+
+.text-mode-header nav {
+  margin-top: 42px;
+}
+
+.text-mode-page a {
+  color: var(--acid);
+  text-underline-offset: 4px;
+}
+
+.text-mode-page a:hover,
+.text-mode-page a:focus-visible {
+  color: #080808;
+  background: var(--acid);
+  outline: 3px solid var(--acid);
+  text-decoration: none;
+}
+
+.text-mode-return {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.text-mode-section {
+  padding: clamp(70px, 10vw, 120px) 0;
+  border-bottom: 1px dashed #4a4a45;
+  scroll-margin-top: 20px;
+}
+
+.text-mode-section > header {
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  gap: 18px;
+  align-items: baseline;
+  margin-bottom: 42px;
+}
+
+.text-mode-section h2 {
+  margin: 0;
+  color: #f1efe8;
+  font: 500 clamp(30px, 5vw, 52px)/1 var(--mono);
+  letter-spacing: -0.06em;
+}
+
+.text-mode-list,
+.text-mode-compact-list,
+.text-mode-article-list {
+  padding: 0;
+  list-style: none;
+}
+
+.text-mode-list {
+  margin: 0 0 48px;
+}
+
+.text-mode-list > li {
+  padding: 38px 0;
+  border-top: 1px solid #292927;
+}
+
+.text-mode-list > li > p:first-child,
+.text-mode-list > li > p:nth-last-of-type(1) {
+  color: #85857e;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.text-mode-list h3 {
+  margin: 10px 0;
+  color: #f1efe8;
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.text-mode-links {
+  margin-top: 20px;
+}
+
+.text-mode-compact-list {
+  margin: 42px 0;
+  border-top: 1px solid #292927;
+}
+
+.text-mode-compact-list li {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) 1.3fr;
+  gap: 28px;
+  padding: 24px 0;
+  border-bottom: 1px solid #292927;
+}
+
+.text-mode-compact-list strong,
+.text-mode-territory dt {
+  color: var(--acid);
+  font-weight: 400;
+}
+
+.text-mode-territory {
+  margin: 42px 0;
+  border-top: 1px solid #292927;
+}
+
+.text-mode-territory > div {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 28px;
+  padding: 18px 0;
+  border-bottom: 1px solid #292927;
+}
+
+.text-mode-territory dd {
+  margin: 0;
+}
+
+.text-mode-article-list {
+  margin: 38px 0;
+  border-top: 1px solid #292927;
+}
+
+.text-mode-article-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid #292927;
+}
+
+.text-mode-article-list span {
+  color: #777770;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.text-mode-section address {
+  margin-top: 30px;
+  font-style: normal;
+}
+
+.text-mode-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 34px;
+  color: #777770;
+}
+
+@media (max-width: 680px) {
+  .text-mode-page {
+    width: calc(100% - 28px);
+    font-size: 13px;
+  }
+
+  .text-mode-return {
+    position: static;
+    display: inline-block;
+    margin-top: 30px;
+  }
+
+  .text-mode-section > header,
+  .text-mode-compact-list li,
+  .text-mode-territory > div {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .text-mode-article-list li {
+    align-items: start;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
 .light-theme {
   --paper: #ffffff;
 }

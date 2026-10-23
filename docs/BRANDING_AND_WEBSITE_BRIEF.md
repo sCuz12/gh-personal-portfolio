@@ -149,7 +149,7 @@ The header uses a dark technical-console treatment:
 - Identity: `GH_ / GEORGE HADJISAVVA`
 - Centered `MENU =` control
 - Theme toggle icon
-- Terminal-style work shortcut (`>_`)
+- Terminal-style text-mode shortcut (`>_`)
 - Pastel-lime `WORK WITH ME »` call to action
 - Expandable menu containing Work, Services, and About
 - Keyboard-first `⌘K` / `Ctrl+K` command palette offering direct access to Ask My CV and the Work page
@@ -166,6 +166,16 @@ The browser scrollbar is visually hidden and replaced on desktop by:
 - Keyboard controls
 
 Native wheel, trackpad, touch, keyboard, and browser scrolling remain intact.
+
+### Text mode
+
+The `>_` shortcut opens `/text`, a fast, semantic, terminal-style version of the complete portfolio:
+
+- No Three.js, custom cursor, custom scrollbar, animated page chrome, or command palette
+- Plain-text sections for work, services, about, technical territory, Brain, CV, and contact
+- Reuses the same structured project and service data as the visual site
+- Supports keyboard navigation, visible focus states, landmarks, headings, and a skip link
+- Remains useful when JavaScript or motion is unavailable
 
 ### Cursor
 

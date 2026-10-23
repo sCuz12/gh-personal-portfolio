@@ -11,6 +11,7 @@ import { useScrollZoom } from '../hooks/useScrollZoom';
 
 export function SiteChrome({ children }) {
   const pathname = usePathname();
+  const isTextMode = pathname === '/text';
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const openCommandPalette = useCallback(() => setIsCommandPaletteOpen(true), []);
   const closeCommandPalette = useCallback(() => setIsCommandPaletteOpen(false), []);
@@ -25,17 +26,19 @@ export function SiteChrome({ children }) {
   }, [pathname]);
 
   return (
-    <div className="app antialiased selection:bg-acid selection:text-ink">
-      <div className="cursor-dot" />
-      <div className="cursor-ring" />
-      <div className="transition">GH_</div>
-      <CustomScrollbar />
-      <Navigation currentPath={pathname} onOpenCommandPalette={openCommandPalette} />
-      <CommandPalette
-        isOpen={isCommandPaletteOpen}
-        onOpen={openCommandPalette}
-        onClose={closeCommandPalette}
-      />
+    <div className={`app antialiased selection:bg-acid selection:text-ink ${isTextMode ? 'text-mode-app' : ''}`}>
+      {!isTextMode && <div className="cursor-dot" />}
+      {!isTextMode && <div className="cursor-ring" />}
+      {!isTextMode && <div className="transition">GH_</div>}
+      {!isTextMode && <CustomScrollbar />}
+      {!isTextMode && <Navigation currentPath={pathname} onOpenCommandPalette={openCommandPalette} />}
+      {!isTextMode && (
+        <CommandPalette
+          isOpen={isCommandPaletteOpen}
+          onOpen={openCommandPalette}
+          onClose={closeCommandPalette}
+        />
+      )}
       <main id="page-content">{children}</main>
     </div>
   );
