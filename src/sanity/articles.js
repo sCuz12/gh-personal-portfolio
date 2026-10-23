@@ -6,6 +6,7 @@ const articleCardProjection = `{
   title,
   "slug": slug.current,
   excerpt,
+  category,
   type,
   status,
   coverImage,
@@ -21,6 +22,7 @@ const articleDetailProjection = `{
   title,
   "slug": slug.current,
   excerpt,
+  category,
   type,
   status,
   coverImage,
@@ -85,18 +87,19 @@ export async function getLatestArticles(limit = 3) {
   return (articles ?? []).map(normalizeArticle);
 }
 
-export async function getBrainArticles({ query = '', topic = '', type = '', status = '' } = {}) {
+export async function getBrainArticles({ query = '', category = '', topic = '', type = '', status = '' } = {}) {
   const search = query.trim() ? `*${query.trim()}*` : '';
   const articles = await fetchContent(
     `*[
       _type == "article" &&
       defined(publishedAt) &&
+      ($category == "" || category == $category) &&
       ($topic == "" || $topic in topics[]->slug.current) &&
       ($type == "" || coalesce(type, "note") == $type) &&
       ($status == "" || coalesce(status, "thinking") == $status) &&
       ($search == "" || title match $search || excerpt match $search)
     ] | order(featured desc, publishedAt desc) ${articleCardProjection}`,
-    { search, topic, type, status },
+    { search, category, topic, type, status },
   );
   return (articles ?? []).map(normalizeArticle);
 }

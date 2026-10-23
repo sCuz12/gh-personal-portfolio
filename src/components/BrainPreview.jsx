@@ -3,6 +3,7 @@ import { ArticleCard } from './ArticleCard';
 
 export function BrainPreview({ articles }) {
   if (!articles.length) return null;
+  const columnCount = Math.min(articles.length, 3);
 
   return (
     <section className="brain-preview zoom-section">
@@ -12,8 +13,10 @@ export function BrainPreview({ articles }) {
           <h2>Notes from<br /><em>inside the work.</em></h2>
           <Link href="/brain">EXPLORE ALL ARTICLES <span>→</span></Link>
         </header>
-        <div className="brain-preview-grid">
-          {articles.map((article) => <ArticleCard article={article} key={article._id} />)}
+        <div className={`brain-preview-grid article-count-${columnCount}`}>
+          {articles.map((article) => (
+            <ArticleCard article={article} key={article._id} showImage={false} />
+          ))}
         </div>
       </div>
     </section>

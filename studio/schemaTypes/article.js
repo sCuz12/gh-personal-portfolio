@@ -11,6 +11,23 @@ export const article = defineType({
   fields: [
     defineField({ name: 'title', title: 'Title', type: 'string', group: 'content', validation: (rule) => rule.required() }),
     defineField({
+      name: 'category',
+      title: 'Category',
+      description: 'The primary editorial pillar for this article.',
+      type: 'string',
+      group: 'content',
+      options: {
+        layout: 'radio',
+        list: [
+          { title: 'Engineering', value: 'engineering' },
+          { title: 'AI Systems', value: 'ai-systems' },
+          { title: 'Business', value: 'business' },
+          { title: 'Mind & Growth', value: 'mind' },
+        ],
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'type',
       title: 'Format',
       type: 'string',
@@ -152,6 +169,11 @@ export const article = defineType({
   ],
   orderings: [{ title: 'Publication date', name: 'publishedAtDesc', by: [{ field: 'publishedAt', direction: 'desc' }] }],
   preview: {
-    select: { title: 'title', subtitle: 'excerpt', media: 'coverImage' },
+    select: { title: 'title', category: 'category', excerpt: 'excerpt', media: 'coverImage' },
+    prepare: ({ title, category, excerpt, media }) => ({
+      title,
+      subtitle: [category, excerpt].filter(Boolean).join(' · '),
+      media,
+    }),
   },
 });

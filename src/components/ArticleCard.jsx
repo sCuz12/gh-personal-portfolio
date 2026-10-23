@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { urlForImage } from '../sanity/image';
+import { getArticleCategoryLabel } from '../data/articleCategories';
 
 export function formatArticleDate(value) {
   if (!value) return '';
@@ -10,17 +11,21 @@ export function formatArticleDate(value) {
   }).format(new Date(value));
 }
 
-export function ArticleCard({ article, featured = false }) {
-  const imageUrl = urlForImage(article.coverImage, { width: featured ? 1400 : 900 });
+export function ArticleCard({ article, featured = false, showImage = true }) {
+  const imageUrl = showImage
+    ? urlForImage(article.coverImage, { width: featured ? 1400 : 900 })
+    : null;
 
   return (
-    <article className={`brain-card ${featured ? 'featured' : ''}`}>
+    <article className={`brain-card ${featured ? 'featured' : ''} ${showImage ? '' : 'without-image'}`}>
       <Link href={`/brain/${article.slug}`}>
-        <div className="brain-card-image">
-          {imageUrl ? <img src={imageUrl} alt={article.coverImage?.alt || ''} /> : <span>GH_ / BRAIN</span>}
-        </div>
+        {showImage && (
+          <div className="brain-card-image">
+            {imageUrl ? <img src={imageUrl} alt={article.coverImage?.alt || ''} /> : <span>GH_ / BRAIN</span>}
+          </div>
+        )}
         <div className="brain-card-meta">
-          <span>{formatArticleDate(article.publishedAt)}</span>
+          <span>{getArticleCategoryLabel(article.category)} · {formatArticleDate(article.publishedAt)}</span>
           <span>{article.readingTime} MIN READ</span>
         </div>
         <h2>{article.title}</h2>

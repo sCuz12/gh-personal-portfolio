@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { siteConfig } from '../config/site';
 import { profileLinks } from '../data/profileLinks';
 import { projects, services, technicalTerritory } from '../data/portfolio';
+import { getArticleCategoryLabel } from '../data/articleCategories';
 
 function TextSection({ id, index, title, children }) {
   return (
@@ -88,7 +89,7 @@ export function TextModePage({ articles = [] }) {
               {articles.map((article) => (
                 <li key={article._id}>
                   <Link href={`/brain/${article.slug}`}>{article.title}</Link>
-                  <span>{article.type} / {article.readingTime} min</span>
+                  <span>{getArticleCategoryLabel(article.category)} / {article.type} / {article.readingTime} min</span>
                 </li>
               ))}
             </ul>

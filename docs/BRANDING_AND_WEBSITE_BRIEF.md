@@ -625,6 +625,13 @@ Current project fields:
 - External project URL
 - Gallery images
 
+Brain articles use a separate editorial taxonomy:
+
+- One required category: Engineering, AI Systems, Business, or Mind & Growth
+- One format: Essay, Note, or Log
+- One or more granular topic references
+- One maturity status: Thinking, Tested, or Shipped
+
 The frontend expects a read-only `GET /projects` API. This allows project content and ordering to be managed independently from the React layout.
 
 Content-system questions:

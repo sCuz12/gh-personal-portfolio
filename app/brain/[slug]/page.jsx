@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArticleBody, headingId } from '../../../src/components/ArticleBody';
 import { formatArticleDate } from '../../../src/components/ArticleCard';
+import { getArticleCategoryLabel } from '../../../src/data/articleCategories';
 import { ArticleStatus } from '../../../src/components/ArticleRow';
 import { Footer } from '../../../src/components/Footer';
 import { ReadingProgress } from '../../../src/components/ReadingProgress';
@@ -68,7 +69,7 @@ export default async function ArticlePage({ params }) {
 
           <article className="article-center">
             <header className="article-hero">
-              <div className="article-kicker"><span>{article.type} · {topic}</span><ArticleStatus status={article.status} /></div>
+              <div className="article-kicker"><span>{getArticleCategoryLabel(article.category)} · {article.type} · {topic}</span><ArticleStatus status={article.status} /></div>
               <h1>{article.title}</h1>
               <p>{article.excerpt}</p>
               <div className="article-dates">

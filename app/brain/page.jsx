@@ -3,6 +3,7 @@ import { ArticleRow, ArticleStatus } from '../../src/components/ArticleRow';
 import { Footer } from '../../src/components/Footer';
 import { getBrainArticles, getBrainStats, getTopics } from '../../src/sanity/articles';
 import { siteConfig } from '../../src/config/site';
+import { articleCategories, getArticleCategoryLabel } from '../../src/data/articleCategories';
 
 export const metadata = {
   title: 'Brain',
@@ -38,6 +39,7 @@ export default async function BrainPage({ searchParams }) {
   const params = await searchParams;
   const filters = {
     q: typeof params?.q === 'string' ? params.q : '',
+    category: typeof params?.category === 'string' ? params.category : '',
     topic: typeof params?.topic === 'string' ? params.topic : '',
     type: typeof params?.type === 'string' ? params.type : '',
     status: typeof params?.status === 'string' ? params.status : '',
@@ -62,6 +64,7 @@ export default async function BrainPage({ searchParams }) {
             <span>{stats.count} NOTES · {stats.topicCount} TOPICS · LAST UPDATED {relativeDate(stats.lastUpdated)}</span>
           </div>
           <form action="/brain" method="get" className="brain-search">
+            {filters.category && <input type="hidden" name="category" value={filters.category} />}
             {filters.topic && <input type="hidden" name="topic" value={filters.topic} />}
             {filters.type && <input type="hidden" name="type" value={filters.type} />}
             {filters.status && <input type="hidden" name="status" value={filters.status} />}
@@ -71,6 +74,7 @@ export default async function BrainPage({ searchParams }) {
         </header>
 
         <section className="brain-filter-panel shell" aria-label="Filter articles">
+          <div><strong>CATEGORY:</strong><nav>{articleCategories.map((item) => <Link className={filters.category === item.value ? 'active' : ''} href={filterHref(filters, { category: item.value })} key={item.value || 'all'}>{item.label}</Link>)}</nav></div>
           <div><strong>TYPE:</strong><nav>{articleTypes.map((item) => <Link className={filters.type === item.value ? 'active' : ''} href={filterHref(filters, { type: item.value })} key={item.label}>{item.label}</Link>)}</nav></div>
           <div><strong>TOPIC:</strong><nav><Link className={!filters.topic ? 'active' : ''} href={filterHref(filters, { topic: '' })}>all</Link>{topics.map((item) => <Link className={filters.topic === item.slug ? 'active' : ''} href={filterHref(filters, { topic: item.slug })} key={item._id}>{item.slug}</Link>)}</nav></div>
           <div><strong>STATUS:</strong><nav>{articleStatuses.map((status) => <Link className={filters.status === status ? 'active' : ''} href={filterHref(filters, { status: filters.status === status ? '' : status })} key={status}><ArticleStatus status={status} /></Link>)}</nav></div>
@@ -80,7 +84,7 @@ export default async function BrainPage({ searchParams }) {
           <section className="brain-featured shell">
             <p className="eyebrow">FEATURED ESSAY</p>
             <Link href={`/brain/${featuredArticle.slug}`}>
-              <span>{featuredArticle.type} · {featuredArticle.topics?.[0]?.title || 'General'} · {featuredArticle.readingTime} MIN</span>
+              <span>{getArticleCategoryLabel(featuredArticle.category)} · {featuredArticle.type} · {featuredArticle.readingTime} MIN</span>
               <h2>{featuredArticle.title}</h2>
               <p>{featuredArticle.excerpt}</p>
               <ArticleStatus status={featuredArticle.status} />
