@@ -13,6 +13,7 @@ const articleCardProjection = `{
   featured,
   publishedAt,
   updatedAt,
+  relatedProject,
   body,
   "topics": topics[]->{title, "slug": slug.current}
 }`;

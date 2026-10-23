@@ -79,7 +79,7 @@ function AudiencePaths() {
   );
 }
 
-export function HomePage({ brainArticles = [] }) {
+export function HomePage({ brainArticles = [], brainArticleCount = brainArticles.length }) {
   return (
     <>
       <Hero />
@@ -90,7 +90,7 @@ export function HomePage({ brainArticles = [] }) {
       />
       <AudiencePaths />
       <CvAssistantPreview />
-      <BrainPreview articles={brainArticles} />
+      <BrainPreview articles={brainArticles} totalCount={brainArticleCount} />
       <section className="statement zoom-section">
         <div className="shell reveal">
           <p>SOFTWARE SHOULD BE</p>

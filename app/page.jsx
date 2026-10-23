@@ -1,7 +1,7 @@
 import { HomePage } from '../src/views/HomePage';
-import { getLatestArticles } from '../src/sanity/articles';
+import { getBrainStats, getLatestArticles } from '../src/sanity/articles';
 
 export default async function Page() {
-  const articles = await getLatestArticles(3);
-  return <HomePage brainArticles={articles} />;
+  const [articles, stats] = await Promise.all([getLatestArticles(8), getBrainStats()]);
+  return <HomePage brainArticles={articles} brainArticleCount={stats.count} />;
 }
