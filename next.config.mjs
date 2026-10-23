@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   cacheComponents: false,
+  async redirects() {
+    return [
+      {
+        source: '/portfolios',
+        destination: '/work',
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
