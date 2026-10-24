@@ -22,10 +22,6 @@ function Hero() {
           <i />
         </div>
 
-        <div className="hero-meta">
-          <span><i /> AVAILABLE FOR SELECT PROJECTS</span>
-          <span>CYPRUS · WORKING GLOBALLY</span>
-        </div>
 
         <div className="hero-copy">
           <p className="hero-kicker">GEORGE HADJISAVVA / SOFTWARE ENGINEER / SYSTEMS BUILDER</p>

@@ -9,7 +9,15 @@ export function Footer() {
         <a href={siteConfig.contact.mailto}>Let’s build what’s next.<span>↗</span></a>
         <div className="foot-meta">
           <span>CYPRUS / WORKING GLOBALLY</span>
-          <span><a href={siteConfig.social.github} target="_blank" rel="noreferrer">GITHUB</a> · LINKEDIN · <a href={siteConfig.contact.mailto}>EMAIL</a> · <AppLink to="/ask-my-cv">ASK MY CV</AppLink></span>
+          <span>
+            <a href={siteConfig.social.github} target="_blank" rel="noreferrer">GITHUB</a>
+            {' · '}
+            <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer">LINKEDIN</a>
+            {' · '}
+            <a href={siteConfig.contact.mailto}>EMAIL</a>
+            {' · '}
+            <AppLink to="/ask-my-cv">ASK MY CV</AppLink>
+          </span>
         </div>
       </div>
     </section>

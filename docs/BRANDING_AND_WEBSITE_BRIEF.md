@@ -372,7 +372,7 @@ Current metadata:
 - LinkedIn
 - Email
 
-The real contact email and social URLs still need to replace placeholders.
+The contact email, GitHub URL, and LinkedIn URL are configured in the shared site settings.
 
 ---
 
@@ -673,9 +673,6 @@ Content-system questions:
 
 ### Missing inputs
 
-- Final email address
-- GitHub URL
-- LinkedIn URL
 - CV/resume file
 - Verified technical stack
 - Employment history

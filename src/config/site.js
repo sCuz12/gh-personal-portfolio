@@ -5,5 +5,6 @@ export const siteConfig = {
   },
   social: {
     github: 'https://github.com/sCuz12',
+    linkedin: 'https://www.linkedin.com/in/george-hadjisavvas-41ba40130/',
   },
 };

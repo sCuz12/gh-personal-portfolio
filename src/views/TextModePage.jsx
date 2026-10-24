@@ -102,6 +102,7 @@ export function TextModePage({ articles = [] }) {
           <address>
             <a href={siteConfig.contact.mailto}>{siteConfig.contact.email}</a>
             <a href={siteConfig.social.github} target="_blank" rel="noreferrer">GitHub</a>
+            <a href={siteConfig.social.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
           </address>
         </TextSection>
       </div>
