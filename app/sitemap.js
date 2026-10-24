@@ -2,7 +2,7 @@ import { getBrainArticles } from '../src/sanity/articles';
 
 export default async function sitemap() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const staticPaths = ['', '/work', '/services', '/about', '/ask-my-cv', '/brain', '/text'];
+  const staticPaths = ['', '/portfolio', '/work', '/services', '/about', '/ask-my-cv', '/brain', '/text'];
   const articles = await getBrainArticles();
 
   return [

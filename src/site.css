@@ -55,6 +55,110 @@
   }
 }
 
+/* Recruiter portfolio — a fast, evidence-led overview. */
+.recruiter-hero {
+  min-height: calc(100svh - 136px);
+  display: grid;
+  align-items: center;
+  padding: clamp(50px, 8vw, 110px) 0;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px),
+    var(--paper);
+  background-size: 100% 25%, 12.5% 100%, auto;
+}
+
+.recruiter-hero-grid { display:grid;grid-template-columns:minmax(0,1.45fr) minmax(320px,.55fr);gap:clamp(50px,8vw,130px);align-items:end }
+.recruiter-hero h1 { max-width:900px;margin:20px 0 0;font-size:clamp(64px,9.4vw,150px);font-weight:500;line-height:.82;letter-spacing:-.08em }
+.recruiter-role { margin:28px 0 0;color:var(--blue);font:500 clamp(20px,2.4vw,34px) var(--mono);letter-spacing:-.04em }
+.recruiter-summary { max-width:760px;margin:22px 0 0;font-size:clamp(16px,1.4vw,21px);line-height:1.55 }
+.recruiter-actions { display:flex;flex-wrap:wrap;gap:10px;margin-top:36px }
+.recruiter-button-outline { color:var(--ink);background:transparent;border:1px solid var(--ink) }
+.recruiter-facts { margin:0;border-top:1px solid var(--ink) }
+.recruiter-facts div { display:grid;grid-template-columns:95px 1fr;gap:20px;padding:17px 0;border-bottom:1px solid var(--line) }
+.recruiter-facts dt { color:#77766f;font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase }
+.recruiter-facts dd { margin:0;font-size:14px }
+.recruiter-facts .recruiter-status dd { position:relative;padding-left:17px }
+.recruiter-status dd:before { content:"";position:absolute;top:.5em;left:0;width:7px;height:7px;background:#6fa12d;border-radius:50%;box-shadow:0 0 0 5px rgba(111,161,45,.14) }
+.recruiter-status dd span { display:block;margin-top:7px;color:#77766f;font:10px var(--mono);text-transform:uppercase }
+.recruiter-section-label { display:flex;gap:22px;margin:0 0 58px;font:10px var(--mono);letter-spacing:.12em }
+.recruiter-section-label span { color:var(--blue) }
+.recruiter-section-heading { display:grid;grid-template-columns:1.25fr .75fr;gap:7vw;align-items:end;margin-bottom:70px }
+.recruiter-section-heading h2,.recruiter-links h2 { margin:0;font-size:clamp(55px,7vw,105px);font-weight:500;line-height:.87;letter-spacing:-.07em }
+.recruiter-section-heading h2 em,.recruiter-links h2 em { font-family:Georgia,serif;font-weight:400 }
+.recruiter-section-heading>p { max-width:520px;margin:0;font-size:16px;line-height:1.6 }
+.recruiter-skills,.recruiter-projects { padding-top:clamp(90px,11vw,160px);padding-bottom:clamp(90px,11vw,160px) }
+.skill-levels { display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line) }
+.skill-level { min-height:440px;padding:28px;border-right:1px solid var(--line) }
+.skill-level:last-child { border-right:0 }
+.skill-level header { display:flex;justify-content:space-between;align-items:start }
+.skill-level header span { color:var(--blue);font:10px var(--mono) }
+.skill-level h3 { margin:0;font-size:clamp(29px,3vw,45px);font-weight:500;letter-spacing:-.05em }
+.skill-level>p { min-height:65px;margin:34px 0;color:#6f6e68;font-size:13px;line-height:1.5 }
+.skill-level ul,.corporate-project ul,.recruiter-project>ul { display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none }
+.skill-level li,.corporate-project li,.recruiter-project>ul li { padding:8px 10px;border:1px solid var(--line);font:9px var(--mono);letter-spacing:.05em;text-transform:uppercase }
+.recruiter-experience { padding:clamp(90px,11vw,160px) 0;color:#f1efe8;background:#0b0b0b }
+.recruiter-experience .recruiter-section-label span { color:var(--acid) }
+.recruiter-experience .recruiter-section-heading>p { color:#96968f }
+.experience-list { padding:0;margin:0;list-style:none;border-top:1px solid #383834 }
+.experience-entry { display:grid;grid-template-columns:70px minmax(230px,.7fr) minmax(0,1.3fr);gap:clamp(20px,4vw,70px);padding:45px 0;border-bottom:1px solid #383834 }
+.experience-number { color:var(--acid);font:12px var(--mono) }
+.experience-identity p,.corporate-project>p:first-child,.recruiter-project>div>p:first-child { margin:0 0 12px;color:#85857e;font:9px var(--mono);letter-spacing:.09em;text-transform:uppercase }
+.experience-identity h3 { margin:0 0 8px;font-size:clamp(24px,2.6vw,38px);font-weight:500;line-height:1.05;letter-spacing:-.045em }
+.experience-identity strong { color:var(--acid);font:10px var(--mono);letter-spacing:.06em;text-transform:uppercase }
+.experience-details>p { margin:0 0 22px;font-size:17px }
+.experience-details ul { display:grid;gap:11px;padding:0;margin:0;list-style:none;color:#a3a39d;font-size:13px;line-height:1.55 }
+.experience-details li { position:relative;padding-left:18px }
+.experience-details li:before { content:"—";position:absolute;left:0;color:var(--acid) }
+.corporate-projects { display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:90px }
+.corporate-project { min-height:390px;display:flex;flex-direction:column;padding:28px;background:var(--ink);color:white }
+.corporate-project:nth-child(2) { background:var(--blue) }
+.corporate-project:nth-child(3) { color:var(--ink);background:var(--acid) }
+.corporate-project h3 { margin:16px 0;font-size:30px;line-height:1.05;letter-spacing:-.04em }
+.corporate-project>p:nth-of-type(2) { font-size:13px;line-height:1.6;opacity:.72 }
+.corporate-project ul { margin-top:auto }
+.corporate-project li { border-color:currentColor;opacity:.72 }
+.recruiter-project-list { border-top:1px solid var(--line) }
+.recruiter-project { display:grid;grid-template-columns:45px minmax(260px,1.5fr) 1fr 120px;gap:clamp(18px,3vw,50px);align-items:start;padding:34px 0;border-bottom:1px solid var(--line) }
+.recruiter-project>span { color:var(--blue);font:11px var(--mono) }
+.recruiter-project h3 { margin:0 0 12px;font-size:clamp(22px,2.3vw,34px);font-weight:500;line-height:1.05;letter-spacing:-.045em }
+.recruiter-project>div>p:last-child { max-width:680px;margin:0;color:#6f6e68;font-size:12px;line-height:1.55 }
+.recruiter-project-links { display:grid;gap:12px }
+.recruiter-project-links a { color:var(--ink);font:9px var(--mono);text-decoration:none;border-bottom:1px solid;padding-bottom:6px }
+.recruiter-links { padding:clamp(90px,11vw,160px) 0;background:var(--blue);color:white }
+.recruiter-link-grid { display:grid;grid-template-columns:repeat(5,1fr);margin-top:80px;border-top:1px solid rgba(255,255,255,.35);border-left:1px solid rgba(255,255,255,.35) }
+.recruiter-link-grid a { min-height:180px;display:grid;grid-template-columns:1fr auto;align-content:space-between;padding:22px;color:white;text-decoration:none;border-right:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);font-size:17px }
+.recruiter-link-grid span { grid-column:1/-1;color:var(--acid);font:9px var(--mono) }
+.recruiter-link-grid b { font-weight:400 }
+
+@media(max-width:900px){
+  .recruiter-hero { min-height:auto }
+  .recruiter-hero-grid,.recruiter-section-heading { grid-template-columns:1fr }
+  .recruiter-facts { margin-top:10px }
+  .skill-levels,.corporate-projects { grid-template-columns:1fr }
+  .skill-level { min-height:0;border-right:0;border-bottom:1px solid var(--line) }
+  .skill-level:last-child { border-bottom:0 }
+  .experience-entry { grid-template-columns:40px 1fr }
+  .experience-details { grid-column:2 }
+  .recruiter-project { grid-template-columns:35px 1fr }
+  .recruiter-project>ul,.recruiter-project-links { grid-column:2 }
+  .recruiter-link-grid { grid-template-columns:1fr 1fr }
+}
+
+@media(max-width:560px){
+  .recruiter-hero { min-height:calc(100svh - 88px);align-items:start;padding-top:58px;background-size:100% 25%,25% 100%,auto }
+  .recruiter-hero h1 { font-size:clamp(58px,19vw,86px) }
+  .recruiter-summary { font-size:15px }
+  .recruiter-actions .button { flex:1;text-align:center;padding-inline:10px }
+  .recruiter-section-label { margin-bottom:38px }
+  .recruiter-section-heading { margin-bottom:45px }
+  .experience-entry { grid-template-columns:28px 1fr;gap:14px }
+  .corporate-project { min-height:330px }
+  .recruiter-project { grid-template-columns:26px 1fr;gap:12px }
+  .recruiter-link-grid { grid-template-columns:1fr }
+  .recruiter-link-grid a { min-height:110px }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-zoom-mark {
     opacity: 0.35;
