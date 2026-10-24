@@ -110,6 +110,10 @@
 .experience-details ul { display:grid;gap:11px;padding:0;margin:0;list-style:none;color:#a3a39d;font-size:13px;line-height:1.55 }
 .experience-details li { position:relative;padding-left:18px }
 .experience-details li:before { content:"—";position:absolute;left:0;color:var(--acid) }
+.recruiter-work-heading { display:grid;grid-template-columns:180px minmax(220px,.7fr) minmax(260px,1fr);gap:clamp(18px,3vw,50px);align-items:end;margin-bottom:28px }
+.recruiter-work-heading p { margin:0;color:var(--blue);font:9px var(--mono);letter-spacing:.09em }
+.recruiter-work-heading h3 { margin:0;font-size:clamp(25px,2.8vw,40px);font-weight:500;letter-spacing:-.045em }
+.recruiter-work-heading span { color:#6f6e68;font-size:13px;line-height:1.55 }
 .corporate-projects { display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:90px }
 .corporate-project { min-height:390px;display:flex;flex-direction:column;padding:28px;background:var(--ink);color:white }
 .corporate-project:nth-child(2) { background:var(--blue) }
@@ -140,6 +144,7 @@
   .skill-level:last-child { border-bottom:0 }
   .experience-entry { grid-template-columns:40px 1fr }
   .experience-details { grid-column:2 }
+  .recruiter-work-heading { grid-template-columns:1fr }
   .recruiter-project { grid-template-columns:35px 1fr }
   .recruiter-project>ul,.recruiter-project-links { grid-column:2 }
   .recruiter-link-grid { grid-template-columns:1fr 1fr }

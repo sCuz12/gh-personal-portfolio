@@ -13,17 +13,17 @@ export const skillGroups = [
   {
     level: 'Primary',
     note: 'Core tools in recent production and independent work.',
-    skills: ['Go', 'PHP / Laravel', 'REST APIs', 'PostgreSQL', 'Redis', 'RabbitMQ', 'Docker', 'Git'],
+    skills: ['Go', 'PHP / Laravel', 'REST APIs', 'PostgreSQL', 'Redis', 'RabbitMQ', 'Docker', 'Git', 'Codex CLI / Claude Code'],
   },
   {
     level: 'Comfortable',
     note: 'Used across shipped products and professional teams.',
-    skills: ['JavaScript', 'TypeScript', 'React', 'MySQL', 'Elasticsearch', 'MongoDB', 'Kubernetes', 'AWS S3', 'ELK / Graylog'],
+    skills: ['Python','JavaScript', 'TypeScript', 'React', 'MySQL', 'Elasticsearch', 'MongoDB', 'Kubernetes', 'AWS S3', 'ELK / Graylog'],
   },
   {
     level: 'Familiar',
     note: 'Applied in earlier work, side projects, or active exploration.',
-    skills: ['Python', 'Java / Spring Boot', 'LangGraph', 'AI agents', 'MCP', 'Tailwind CSS'],
+    skills: [ 'Java / Spring Boot', 'LangGraph', 'AI agents', 'MCP', 'Tailwind CSS'],
   },
 ];
 
@@ -37,6 +37,7 @@ export const experience = [
       'Build Go-based synchronization and automation systems spanning ERP, e-commerce, and backend workflows.',
       'Design multi-tenant product, inventory, pricing, and order synchronization for ERP-to-Shopify integrations.',
       'Develop asynchronous data pipelines with APIs, PostgreSQL, Redis, queues, and AI-assisted automation.',
+      'Collaborate with digital agencies to build internal tools and AI-powered workflows tailored to their operations.',
     ],
   },
   {

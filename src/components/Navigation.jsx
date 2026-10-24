@@ -5,7 +5,6 @@ import { AppLink } from './AppLink';
 import { siteConfig } from '../config/site';
 
 const navigationItems = [
-  ['/portfolio', 'Portfolio'],
   ['/work', <>Work <sup>04</sup></>],
   ['/services', 'Services'],
   ['/about', 'About'],

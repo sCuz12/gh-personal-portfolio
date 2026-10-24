@@ -10,6 +10,8 @@ import {
   skillGroups,
 } from '../data/recruiterPortfolio';
 
+const selectedIndependentProjects = projects.filter((project) => project.featured);
+
 function SectionLabel({ index, children }) {
   return <p className="recruiter-section-label reveal"><span>{index}</span>{children}</p>;
 }
@@ -83,12 +85,17 @@ export function RecruiterPortfolioPage() {
       </section>
 
       <section className="recruiter-projects shell" aria-labelledby="projects-title">
-        <SectionLabel index="04">PROJECTS / CORPORATE + INDEPENDENT</SectionLabel>
+        <SectionLabel index="04">SELECTED WORK / CORPORATE + INDEPENDENT</SectionLabel>
         <div className="recruiter-section-heading reveal">
-          <h2 id="projects-title">What I’ve<br /><em>worked on.</em></h2>
-          <p>Corporate systems are described at a safe level. Independent products link to public case studies where available.</p>
+          <h2 id="projects-title">Selected work,<br /><em>with context.</em></h2>
+          <p>Production systems from professional teams, alongside independent products I designed and built.</p>
         </div>
 
+        <div className="recruiter-work-heading reveal">
+          <p>01 / PROFESSIONAL SYSTEMS</p>
+          <h3>Corporate work</h3>
+          <span>Described at a safe level to respect confidentiality.</span>
+        </div>
         <div className="corporate-projects">
           {corporateProjects.map((project) => (
             <article className="corporate-project reveal" key={project.id}>
@@ -98,8 +105,13 @@ export function RecruiterPortfolioPage() {
           ))}
         </div>
 
+        <div className="recruiter-work-heading reveal">
+          <p>02 / INDEPENDENT PRODUCTS</p>
+          <h3>Projects I built</h3>
+          <span>Selected products spanning AI governance, research, backend automation, and public data.</span>
+        </div>
         <div className="recruiter-project-list">
-          {projects.map((project, index) => (
+          {selectedIndependentProjects.map((project, index) => (
             <article className="recruiter-project reveal" key={project.id}>
               <span>{String(index + 1).padStart(2, '0')}</span>
               <div><p>{project.type} · {project.year}</p><h3>{project.title}</h3><p>{project.description}</p></div>
@@ -127,7 +139,6 @@ export function RecruiterPortfolioPage() {
         </div>
       </section>
 
-      <Footer />
     </>
   );
 }
