@@ -1,4 +1,5 @@
 import '../src/site.css';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { SiteChrome } from '../src/components/SiteChrome';
 
 export const metadata = {
@@ -11,6 +12,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+
   return (
     <html lang="en">
       <head>
@@ -21,6 +24,7 @@ export default function RootLayout({ children }) {
       <body>
         <SiteChrome>{children}</SiteChrome>
       </body>
+      {googleAnalyticsId ? <GoogleAnalytics gaId={googleAnalyticsId} /> : null}
     </html>
   );
 }
