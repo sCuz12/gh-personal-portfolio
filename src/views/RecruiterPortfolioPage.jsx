@@ -37,7 +37,6 @@ export function RecruiterPortfolioPage() {
           <dl className="recruiter-facts" aria-label="Location and availability">
             <div><dt>Location</dt><dd>{recruiterProfile.location}</dd></div>
             <div><dt>Timezone</dt><dd>{recruiterProfile.timezone}</dd></div>
-            <div><dt>Work mode</dt><dd>{recruiterProfile.workMode}</dd></div>
             <div className="recruiter-status"><dt>Status</dt><dd>{recruiterProfile.availability}<span>{recruiterProfile.focus}</span></dd></div>
           </dl>
         </div>
