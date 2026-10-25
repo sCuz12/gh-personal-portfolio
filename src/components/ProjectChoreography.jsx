@@ -141,8 +141,6 @@ export function ProjectChoreography({
   const crossfadeProgress = clamp((progress - 0.8) / 0.2);
   const displayedNumber = Math.ceil((activeIndex + 1) * enterProgress);
   const status = activeProject.year === 'CURRENT' ? 'MVP' : 'SHIPPED';
-  const caseStudyUrl = activeProject.projectUrl ?? `#${activeProject.slug}`;
-
   return (
     <section
       id={id}
@@ -214,13 +212,16 @@ export function ProjectChoreography({
                 ))}
               </ul>
             </div>
-            {activeProject.caseStudyPath ? (
-              <AppLink to={activeProject.caseStudyPath}>View case study <span>→</span></AppLink>
-            ) : (
-              <a href={caseStudyUrl} target={activeProject.projectUrl ? '_blank' : undefined} rel={activeProject.projectUrl ? 'noreferrer' : undefined}>
-                View case study <span>→</span>
-              </a>
-            )}
+            <div className="choreography-actions">
+              {activeProject.caseStudyPath && (
+                <AppLink to={activeProject.caseStudyPath}>View case study <span>→</span></AppLink>
+              )}
+              {activeProject.projectUrl && (
+                <a href={activeProject.projectUrl} target="_blank" rel="noreferrer">
+                  Visit project <span>↗</span>
+                </a>
+              )}
+            </div>
           </footer>
         </article>
       </div>

@@ -1331,6 +1331,11 @@
   font-size: 20px;
 }
 
+.choreography-actions {
+  display: grid;
+  min-width: 150px;
+}
+
 @keyframes gatePulse {
   50% {
     box-shadow: 0 0 0 12px rgba(223, 242, 166, 0.08), 0 0 45px rgba(223, 242, 166, 0.2);
