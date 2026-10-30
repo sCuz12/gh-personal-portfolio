@@ -12,6 +12,10 @@
   pointer-events: none;
   will-change: clip-path;
 }
+
+.hero h1 em::after {
+  content: attr(data-text);
+}
 .hero-zoom-mark {
   position: absolute;
   top: 52%;

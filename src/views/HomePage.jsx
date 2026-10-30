@@ -25,7 +25,7 @@ function Hero() {
 
         <div className="hero-copy">
           <p className="hero-kicker">GEORGE HADJISAVVA / SOFTWARE ENGINEER / SYSTEMS BUILDER</p>
-          <h1><span>I build the systems</span><br /><em>behind the magic.</em></h1>
+          <h1><span>I turn complexity</span><br /><em data-text="into trusted software.">into trusted software.</em></h1>
           <p className="hero-lede">
             Backend infrastructure, agentic workflows, custom MCP servers, and interfaces
             engineered as one coherent product.
