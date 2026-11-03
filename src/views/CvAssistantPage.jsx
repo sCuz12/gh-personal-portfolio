@@ -1,11 +1,10 @@
 import { CopyQuestionButton } from '../components/CopyQuestionButton';
+import { CvAssistantEmbed } from '../components/CvAssistantEmbed';
 
 import { Footer } from '../components/Footer';
 import { cvAssistantQuestions } from '../data/cvAssistant';
 import { profileLinks } from '../data/profileLinks';
 import { siteConfig } from '../config/site';
-
-const assistantUrl = 'https://georgehadjisavva-conversations-me.hf.space/?__theme=dark';
 
 export function CvAssistantPage() {
   return (
@@ -20,21 +19,7 @@ export function CvAssistantPage() {
         </header>
 
         <div className="cv-assistant-layout shell">
-          <section className="cv-console" aria-labelledby="cv-console-title">
-            <header>
-              <div><strong id="cv-console-title">GH_</strong><span>/</span><span>cv-assistant</span></div>
-              <p><i /> SYSTEM ONLINE</p>
-            </header>
-            <div className="cv-iframe-frame">
-              <iframe
-                src={assistantUrl}
-                title="Chat with George's CV assistant"
-                loading="lazy"
-                allow="clipboard-write"
-              />
-            </div>
-            <p className="cv-disclaimer">AI can make mistakes. For exact details, see the CV.</p>
-          </section>
+          <CvAssistantEmbed />
 
           <aside className="cv-assistant-sidebar">
             <section className="try-asking" aria-labelledby="try-asking-title">
