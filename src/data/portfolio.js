@@ -91,11 +91,11 @@ export const projects = [
     slug: 'symvaseis-cy-public-procurement-explorer',
     type: 'DATA PLATFORM',
     title: 'Symvaseis.cy — Cyprus Public Procurement Explorer',
-    description: 'A platform that aggregates and normalizes Cyprus public procurement data, making tenders and awarded contracts easier to search and explore. It provides visibility into government spending, contracting authorities, winning companies, award values, and historical procurement activity.',
+    description: 'A procurement intelligence platform that turns fragmented European tender records into connected histories for contractors and authorities, with a web explorer, Telegram alerts, and natural-language access through MCP.',
     tone: 'blue',
     year: 'PRODUCTION',
     role: 'Data Platform + Full-stack Engineering',
-    technologies: ['Golang', 'CSV Processing', 'APIS ingestion', 'MCP'],
+    technologies: ['Go', 'PostgreSQL', 'TED data', 'Telegram API', 'MCP'],
     architecture: [
       { label: 'PUBLIC RECORDS', detail: 'Procurement data collected' },
       { label: 'DATA PIPELINE', detail: 'Normalize and index' },

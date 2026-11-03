@@ -27,6 +27,9 @@ export function SymvaseisCaseStudyPage() {
         <section className="decree-stake shell" aria-labelledby="symvaseis-stake-title">
           <p className="eyebrow">01 / THE STAKE</p>
           <h2 id="symvaseis-stake-title">{caseStudy.stake}</h2>
+          <div className="symvaseis-problem-copy">
+            {caseStudy.problem.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </div>
         </section>
 
         <CaseStudyArchitecture
@@ -52,7 +55,7 @@ export function SymvaseisCaseStudyPage() {
           <div className="shell decree-section-heading">
             <p className="eyebrow">04 / THE EXPLORER</p>
             <h2 id="symvaseis-interface-title">Documents become<br /><em>questions people can ask.</em></h2>
-            <p>The interface organizes procurement activity around the entities and values people need to investigate.</p>
+            <p>The explorer removes source-record noise and organizes procurement activity around the entities, relationships, and values people actually need to investigate.</p>
           </div>
 
           <div className="shell symvaseis-explorer-grid">
@@ -72,16 +75,34 @@ export function SymvaseisCaseStudyPage() {
           </div>
         </section>
 
+        <section className="symvaseis-access shell" aria-labelledby="symvaseis-access-title">
+          <header className="decree-section-heading">
+            <p className="eyebrow">05 / THREE WAYS IN</p>
+            <h2 id="symvaseis-access-title">Useful beyond<br /><em>the dashboard.</em></h2>
+            <p>The same normalized procurement model powers human exploration, scheduled opportunity alerts, and natural-language investigation through AI assistants.</p>
+          </header>
+          <div className="symvaseis-access-grid">
+            {caseStudy.accessChannels.map((channel) => (
+              <article key={channel.number}>
+                <span>{channel.number}</span>
+                <h3>{channel.title}</h3>
+                <p>{channel.detail}</p>
+                <small>{channel.cadence}</small>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="decree-retrospective shell" aria-labelledby="symvaseis-result-title">
           <div>
-            <p className="eyebrow">05 / RESULT</p>
-            <h2 id="symvaseis-result-title">Procurement activity became easier to search and connect.</h2>
-            <p>Symvaseis.cy brings tenders and awarded contracts into a common exploration layer, giving people clearer paths through authorities, companies, award values, and historical activity.</p>
+            <p className="eyebrow">06 / RESULT</p>
+            <h2 id="symvaseis-result-title">Flat records became connected procurement intelligence.</h2>
+            <p>Symvaseis.cy makes it possible to follow what each contractor has won, understand how much each authority has awarded, receive newly opened tenders through Telegram, and ask procurement questions from an MCP-compatible AI assistant.</p>
           </div>
           <div>
             <p className="eyebrow">WHAT I’D CHANGE</p>
-            <h3>Expose data quality as part of the product.</h3>
-            <p>I’d make source freshness, normalization confidence, and incomplete fields more visible, helping visitors understand not only the record but the quality of the evidence behind it.</p>
+            <h3>Make entity confidence visible.</h3>
+            <p>I’d expose why records were matched, flag uncertain identities, and show source freshness more clearly. In a public-data product, the quality and provenance of a connection should be as inspectable as the connection itself.</p>
           </div>
         </section>
 

@@ -2561,6 +2561,21 @@ html::-webkit-scrollbar {
   color: var(--ink);
 }
 
+.symvaseis-problem-copy {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 5vw, 80px);
+  margin: 55px 0 0 auto;
+  max-width: 920px;
+}
+
+.symvaseis-problem-copy p {
+  margin: 0;
+  color: #5f5f5a;
+  font-size: clamp(15px, 1.35vw, 19px);
+  line-height: 1.7;
+}
+
 .symvaseis-explorer-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.7fr);
@@ -2620,6 +2635,52 @@ html::-webkit-scrollbar {
   margin: 10px 0 0;
   color: #6a6a70;
   font-size: 13px;
+}
+
+.symvaseis-access {
+  padding-top: clamp(110px, 14vw, 200px);
+  padding-bottom: clamp(110px, 14vw, 200px);
+}
+
+.symvaseis-access-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+}
+
+.symvaseis-access-grid article {
+  display: flex;
+  min-height: 390px;
+  flex-direction: column;
+  padding: clamp(24px, 3vw, 42px);
+  background: var(--paper);
+}
+
+.symvaseis-access-grid span,
+.symvaseis-access-grid small {
+  color: var(--symvaseis-blue);
+  font: 9px var(--mono);
+  letter-spacing: 0.1em;
+}
+
+.symvaseis-access-grid h3 {
+  margin: 70px 0 20px;
+  font-size: clamp(29px, 3vw, 46px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.symvaseis-access-grid p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.symvaseis-access-grid small {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
 }
 
 .next-project-decree .next-project-surface {
@@ -3361,6 +3422,11 @@ html::-webkit-scrollbar {
   }
 
   .symvaseis-explorer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .symvaseis-problem-copy,
+  .symvaseis-access-grid {
     grid-template-columns: 1fr;
   }
 
