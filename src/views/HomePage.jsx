@@ -83,6 +83,7 @@ export function HomePage({ brainArticles = [], brainArticleCount = brainArticles
         id="featured-work"
         indexLabel="FEATURED WORK"
         maxProjects={3}
+        featuredOnly
       />
       <AudiencePaths />
       <CvAssistantPreview />

@@ -112,8 +112,9 @@ export function ProjectChoreography({
   id,
   indexLabel = 'PROJECT INDEX',
   maxProjects,
+  featuredOnly = false,
 }) {
-  const allProjects = useProjects();
+  const allProjects = useProjects({ featuredOnly });
   const projects = typeof maxProjects === 'number'
     ? allProjects.slice(0, maxProjects)
     : allProjects;
