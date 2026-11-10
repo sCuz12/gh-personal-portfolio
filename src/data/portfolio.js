@@ -86,6 +86,7 @@ export const projects = [
     priority: 4,
     imageUrl: 'https://cdn.shopify.com/app-store/listing_images/bc6e8e87a309ab5792fae3d2627859bf/promotional_image/CL3UtNur3JcDEAE%3D.jpeg?height=720&quality=90&width=1280',
     projectUrl: 'https://apps.shopify.com/wooferry',
+    caseStudyPath: '/work/wooferry-woocommerce-shopify-migration',
   },
   {
     id: '12',
